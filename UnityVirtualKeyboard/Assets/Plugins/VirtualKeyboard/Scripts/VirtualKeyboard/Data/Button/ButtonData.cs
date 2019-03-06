@@ -1,0 +1,110 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Helpers.Interfaces;
+using UnityEngine;
+
+namespace VirtualKeyboard.Data.Button
+{
+    /// <summary>
+    ///     Stores data related to a keyboard button
+    /// </summary>
+    [Serializable]
+    public class ButtonData : IButtonData
+    {
+        /// <summary>
+        ///     Name of the button
+        /// </summary>
+        [SerializeField] private string _name;
+
+        /// <summary>
+        ///     List of the button characters. Each member of the list represents characters that will be typed when the button is
+        ///     pressed in a certain mode (e.g. SHIFT or non-SHIFT mode)
+        /// </summary>
+        [SerializeField] private List<string> _buttonModeCharacters;
+
+        /// <summary>
+        ///     Horizontal size of the button in size units. The default size of the button is 1
+        /// </summary>
+        [SerializeField] private int _buttonHorizontalSize;
+
+        /// <summary>
+        ///     IEnumerable of the button characters. Each member of the list represents characters that will be typed when the
+        ///     button is
+        ///     pressed in a certain mode (e.g. SHIFT or non-SHIFT mode)
+        /// </summary>
+        public IEnumerable<string> ButtonModeCharacters => _buttonModeCharacters;
+
+        /// <summary>
+        ///     Horizontal size of the button in size units. The default size of the button is 1
+        /// </summary>
+        public int ButtonHorizontalSize => _buttonHorizontalSize;
+
+        #region Decoration
+
+        /// <summary>
+        ///     Sets amount of the modes that the button should support
+        /// </summary>
+        /// <param name="modesAmount">New amount of supported modes</param>
+        public void SetModesAmount(int modesAmount)
+        {
+            var delta = modesAmount - _buttonModeCharacters.Count;
+
+            if (delta < 0) // Reduce amount of the buttons modes
+                _buttonModeCharacters = _buttonModeCharacters.Take(modesAmount).ToList();
+            else if (delta > 0) // Increase amount of the buttons modes
+                for (var i = 0; i < delta; i++)
+                    _buttonModeCharacters.Add("");
+        }
+
+        /// <summary>
+        ///     Sets the display name of the button
+        /// </summary>
+        /// <param name="name">New display name</param>
+        public void SetName(string name)
+        {
+            _name = name;
+        }
+
+
+        /// <summary>
+        ///     Fixes the button data
+        /// </summary>
+        public void Fix()
+        {
+            _buttonHorizontalSize = Mathf.Max(1, _buttonHorizontalSize);
+        }
+
+        #endregion
+    }
+
+    /// <summary>
+    ///     Interface for the ButtonData
+    /// </summary>
+    public interface IButtonData : IFixable
+    {
+        /// <summary>
+        ///     IEnumerable of the button characters. Each member of the list represents characters that will be typed when the
+        ///     button is
+        ///     pressed in a certain mode (e.g. SHIFT or non-SHIFT mode)
+        /// </summary>
+        IEnumerable<string> ButtonModeCharacters { get; }
+
+        /// <summary>
+        ///     Horizontal size of the button in size units. The default size of the button is 1
+        /// </summary>
+        int ButtonHorizontalSize { get; }
+
+        /// <summary>
+        ///     Sets amount of the modes that the button should support
+        /// </summary>
+        /// <param name="modesAmount">New amount of supported modes</param>
+        void SetModesAmount(int modesAmount);
+
+        /// <summary>
+        ///     Sets the display name of the button
+        /// </summary>
+        /// <param name="name">New display name</param>
+        void SetName(string name);
+    }
+}
