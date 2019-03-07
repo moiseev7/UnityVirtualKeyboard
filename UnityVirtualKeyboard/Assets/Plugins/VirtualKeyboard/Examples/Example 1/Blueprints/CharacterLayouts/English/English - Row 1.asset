@@ -10,47 +10,47 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b140b646a2fbb8488d1bf97b65ecbfe, type: 3}
-  m_Name: English - Row 0
+  m_Name: English - Row 1
   m_EditorClassIdentifier: 
   _amountOfModes: 2
   _buttons:
   - _buttonModeCharacters:
-    - 1
-    - 1
+    - q
+    - Q
     _buttonHorizontalSize: 1
   - _buttonModeCharacters:
-    - 2
-    - 2
+    - w
+    - W
     _buttonHorizontalSize: 1
   - _buttonModeCharacters:
-    - 3
-    - 3
+    - e
+    - E
     _buttonHorizontalSize: 1
   - _buttonModeCharacters:
-    - 4
-    - 4
+    - r
+    - R
     _buttonHorizontalSize: 1
   - _buttonModeCharacters:
-    - 5
-    - 5
+    - t
+    - T
     _buttonHorizontalSize: 1
   - _buttonModeCharacters:
-    - 6
-    - 6
+    - y
+    - Y
     _buttonHorizontalSize: 1
   - _buttonModeCharacters:
-    - 7
-    - 7
+    - u
+    - U
     _buttonHorizontalSize: 1
   - _buttonModeCharacters:
-    - 8
-    - 8
+    - i
+    - I
     _buttonHorizontalSize: 1
   - _buttonModeCharacters:
-    - 9
-    - 9
+    - o
+    - O
     _buttonHorizontalSize: 1
   - _buttonModeCharacters:
-    - 0
-    - 0
+    - p
+    - P
     _buttonHorizontalSize: 1
