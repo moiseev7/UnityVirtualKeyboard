@@ -13,11 +13,6 @@ namespace VirtualKeyboard.Data.Button
     public class ButtonData : IButtonData
     {
         /// <summary>
-        ///     Name of the button
-        /// </summary>
-        [SerializeField] private string _name;
-
-        /// <summary>
         ///     List of the button characters. Each member of the list represents characters that will be typed when the button is
         ///     pressed in a certain mode (e.g. SHIFT or non-SHIFT mode)
         /// </summary>
@@ -58,16 +53,6 @@ namespace VirtualKeyboard.Data.Button
         }
 
         /// <summary>
-        ///     Sets the display name of the button
-        /// </summary>
-        /// <param name="name">New display name</param>
-        public void SetName(string name)
-        {
-            _name = name;
-        }
-
-
-        /// <summary>
         ///     Fixes the button data
         /// </summary>
         public void Fix()
@@ -100,11 +85,5 @@ namespace VirtualKeyboard.Data.Button
         /// </summary>
         /// <param name="modesAmount">New amount of supported modes</param>
         void SetModesAmount(int modesAmount);
-
-        /// <summary>
-        ///     Sets the display name of the button
-        /// </summary>
-        /// <param name="name">New display name</param>
-        void SetName(string name);
     }
 }
