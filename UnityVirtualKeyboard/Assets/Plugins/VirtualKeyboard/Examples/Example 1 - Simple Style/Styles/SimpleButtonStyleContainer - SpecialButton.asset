@@ -10,5 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7073492bab82e9c47bcc34ffcb77d264, type: 3}
-  m_Name: SimpleButtonStyleContainer - GeneralButton
+  m_Name: SimpleButtonStyleContainer - SpecialButton
   m_EditorClassIdentifier: 
+  _normalSettings:
+    _backgroundColor: {r: 1, g: 0.56976867, b: 0, a: 1}
+    _symbolColor: {r: 1, g: 1, b: 1, a: 1}
+  _highlightedSettings:
+    _backgroundColor: {r: 0.8490566, g: 0.6010426, b: 0.22027414, a: 1}
+    _symbolColor: {r: 1, g: 1, b: 1, a: 1}
+  _pressedSettings:
+    _backgroundColor: {r: 0, g: 0, b: 0, a: 1}
+    _symbolColor: {r: 1, g: 1, b: 1, a: 1}
+  _disabledSettings:
+    _backgroundColor: {r: 0.8207547, g: 0.8207547, b: 0.8207547, a: 1}
+    _symbolColor: {r: 0, g: 0, b: 0, a: 1}

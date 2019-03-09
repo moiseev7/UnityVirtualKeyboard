@@ -12,3 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7073492bab82e9c47bcc34ffcb77d264, type: 3}
   m_Name: SimpleButtonStyleContainer - GeneralButton
   m_EditorClassIdentifier: 
+  _normalSettings:
+    _backgroundColor: {r: 1, g: 1, b: 1, a: 1}
+    _symbolColor: {r: 0, g: 0, b: 0, a: 1}
+  _highlightedSettings:
+    _backgroundColor: {r: 0.6179246, g: 0.8353639, b: 1, a: 1}
+    _symbolColor: {r: 0, g: 0, b: 0, a: 1}
+  _pressedSettings:
+    _backgroundColor: {r: 0, g: 0.64651275, b: 1, a: 1}
+    _symbolColor: {r: 1, g: 1, b: 1, a: 1}
+  _disabledSettings:
+    _backgroundColor: {r: 0.7264151, g: 0.7264151, b: 0.7264151, a: 1}
+    _symbolColor: {r: 0, g: 0, b: 0, a: 1}

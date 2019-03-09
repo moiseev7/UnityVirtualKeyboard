@@ -8,8 +8,6 @@ namespace VirtualKeyboard.ScriptableObjects.Configs.ButtonStyle.SimpleButtonStyl
     [CreateAssetMenu(fileName = "SimpleButtonStyleContainer", menuName = "Virtual Keyboard/Configs/Button Styles/Simple/Style Container")]
     public class SimpleButtonStyleContainer : ScriptableObject, IButtonStyleContainer<ISimpleButtonStyleElement>
     {
-        [SerializeField] private int _tes;
-
         /// <summary>
         /// Settings that will be applied when the button is in the normal state
         /// </summary>
