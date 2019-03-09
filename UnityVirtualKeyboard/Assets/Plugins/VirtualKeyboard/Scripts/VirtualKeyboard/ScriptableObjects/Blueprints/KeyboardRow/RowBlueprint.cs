@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
-using System.Text;
 using UnityEngine;
 using VirtualKeyboard.Data.Button;
 
-
-namespace VirtualKeyboard.ScriptableObjects.KeyboardBlueprints.KeyboardRow
+namespace VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardRow
 {
     /// <summary>
     ///     Blueprint of a keyboard row
@@ -55,7 +53,7 @@ namespace VirtualKeyboard.ScriptableObjects.KeyboardBlueprints.KeyboardRow
         {
             _amountOfModes = Mathf.Max(1, AmountOfModes);
 
-            foreach (var button in Buttons) button.Fix();
+            foreach (var button in _buttons) button.Fix();
         }
 
         #endregion

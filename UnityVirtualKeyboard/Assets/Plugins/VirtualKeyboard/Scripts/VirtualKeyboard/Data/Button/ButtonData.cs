@@ -10,7 +10,7 @@ namespace VirtualKeyboard.Data.Button
     ///     Stores data related to a keyboard button
     /// </summary>
     [Serializable]
-    public class ButtonData : IButtonData
+    public class ButtonData : IButtonData, IFixable
     {
         /// <summary>
         ///     List of the button characters. Each member of the list represents characters that will be typed when the button is
@@ -66,7 +66,7 @@ namespace VirtualKeyboard.Data.Button
     /// <summary>
     ///     Interface for the ButtonData
     /// </summary>
-    public interface IButtonData : IFixable
+    public interface IButtonData 
     {
         /// <summary>
         ///     IEnumerable of the button characters. Each member of the list represents characters that will be typed when the

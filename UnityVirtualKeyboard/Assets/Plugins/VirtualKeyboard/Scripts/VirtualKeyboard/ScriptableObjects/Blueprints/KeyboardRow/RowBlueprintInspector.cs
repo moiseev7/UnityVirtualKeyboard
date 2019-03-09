@@ -1,11 +1,9 @@
-﻿using UnityEngine;
-
-#if UNITY_EDITOR
+﻿#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditorInternal;
+using UnityEngine;
 
-
-namespace VirtualKeyboard.ScriptableObjects.KeyboardBlueprints.KeyboardRow
+namespace VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardRow
 {
     /// <summary>
     ///     Custom inspector for <see cref="KeyboardRow.RowBlueprint" />

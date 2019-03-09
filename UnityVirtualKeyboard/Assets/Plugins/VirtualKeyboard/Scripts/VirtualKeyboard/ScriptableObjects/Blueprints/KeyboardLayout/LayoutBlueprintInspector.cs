@@ -1,10 +1,9 @@
-﻿using UnityEngine;
-
-#if UNITY_EDITOR
+﻿#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditorInternal;
+using UnityEngine;
 
-namespace VirtualKeyboard.ScriptableObjects.KeyboardBlueprints.KeyboardLayout
+namespace VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardLayout
 {
     [CustomEditor(typeof(LayoutBlueprint))]
     public class LayoutBlueprintInspector : Editor
