@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Helpers.Interfaces;
 using UnityEngine;
 using VirtualKeyboard.Data.Button;
 
@@ -8,7 +9,7 @@ namespace VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardRow
     ///     Blueprint of a keyboard row
     /// </summary>
     [CreateAssetMenu(fileName = "Language - Row 0", menuName = "Virtual Keyboard/Blueprints/Row Blueprint")]
-    public class RowBlueprint : ScriptableObject, IRowBlueprint
+    public class RowBlueprint : ScriptableObject, IRowBlueprint, IFixable
     {
         /// <summary>
         ///     Amount of modes supported by the row
@@ -54,7 +55,7 @@ namespace VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardRow
         /// <summary>
         ///     Fixes the row data
         /// </summary>
-        private void Fix()
+        public void Fix()
         {
             _amountOfModes = Mathf.Max(1, AmountOfModes);
 
