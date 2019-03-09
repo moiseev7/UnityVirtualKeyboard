@@ -20,9 +20,6 @@ namespace VirtualKeyboard.Data.ButtonDataTests
         /// </summary>
         public class FixTests : ButtonDataTests
         {
-            /// <summary>
-            /// To make sure that Fix() resets the size to 1 if it were less than 1
-            /// </summary> 
             [Test]
             public void Fix_Sets_Size_To_1_If_Size_Is_Less_Than_1()
             {
@@ -32,11 +29,8 @@ namespace VirtualKeyboard.Data.ButtonDataTests
                 Assert.AreEqual(1, _target.ButtonHorizontalSize);
             }
 
-            /// <summary>
-            /// To make sure that Fix() doesn't affect the size if it it equal or bigger than 1
-            /// </summary> 
             [Test]
-            public void Fix_Sets_Size_To_1_If_Size_Is_LE_1()
+            public void Fix_Sets_Size_To_1_If_Size_Is_Greater_Or_Equal_To_1()
             {
                 _target = new ButtonData(new List<string>(), 2);
                 Assert.AreEqual(2, _target.ButtonHorizontalSize);

@@ -20,6 +20,12 @@ namespace VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardRow
         /// </summary>
         [SerializeField] private List<ButtonData> _buttons;
 
+        public void Initialize(int amountOfModes, List<ButtonData> buttons)
+        {
+            _amountOfModes = amountOfModes;
+            _buttons = buttons;
+        }
+
         /// <summary>
         ///     Amount of modes supported by the row
         /// </summary>
@@ -35,7 +41,6 @@ namespace VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardRow
         private void OnValidate()
         {
             Fix();
-            UpdateModesSize();
         }
 
         /// <summary>
@@ -53,7 +58,9 @@ namespace VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardRow
         {
             _amountOfModes = Mathf.Max(1, AmountOfModes);
 
-            foreach (var button in _buttons) button.Fix();
+            foreach (var button in Buttons) (button as ButtonData)?.Fix();
+
+            UpdateModesSize();
         }
 
         #endregion
