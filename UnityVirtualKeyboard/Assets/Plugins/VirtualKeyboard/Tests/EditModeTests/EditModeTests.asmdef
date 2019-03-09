@@ -1,7 +1,8 @@
 {
     "name": "EditModeTests",
     "references": [
-        "virtualKeybaord"
+        "virtualKeybaord",
+        "NSubstitute"
     ],
     "optionalUnityReferences": [
         "TestAssemblies"
