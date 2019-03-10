@@ -1,4 +1,4 @@
-﻿namespace VirtualKeyboard.ScriptableObjects.Configs.ButtonStyle
+﻿namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle
 {
     /// <summary>
     /// Interface for a generic button style container

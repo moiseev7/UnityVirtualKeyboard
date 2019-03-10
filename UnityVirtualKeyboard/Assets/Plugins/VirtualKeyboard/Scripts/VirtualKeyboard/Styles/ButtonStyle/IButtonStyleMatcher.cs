@@ -1,4 +1,4 @@
-﻿namespace VirtualKeyboard.ScriptableObjects.Configs.ButtonStyle
+﻿namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle
 {
     /// <summary>
     /// An interface that matches a button style enum and a style container

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardRow;
+using VirtualKeyboard.Scripts.VirtualKeyboard.Blueprints.KeyboardRow;
 
-namespace VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardLayout
+namespace VirtualKeyboard.Scripts.VirtualKeyboard.Blueprints.KeyboardLayout
 {
     /// <summary>
     /// Blueprint of the keyboard layout

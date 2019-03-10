@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VirtualKeyboard.ScriptableObjects.Configs.ButtonStyle.SimpleButtonStyle
+namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
 {
 
     public interface ISimpleButtonStyleElement

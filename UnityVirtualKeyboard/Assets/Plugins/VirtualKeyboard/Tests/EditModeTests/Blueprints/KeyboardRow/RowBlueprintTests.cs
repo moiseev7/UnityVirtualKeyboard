@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using NSubstitute;
 using NUnit.Framework;
 using UnityEngine;
 using VirtualKeyboard.Data.Button;
+using VirtualKeyboard.Scripts.VirtualKeyboard.Blueprints.KeyboardRow;
 
-namespace VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardRow
+namespace VirtualKeyboard.Blueprints.KeyboardRow
 {
     /// <summary>
     /// Tests for <see cref="RowBlueprint"/>

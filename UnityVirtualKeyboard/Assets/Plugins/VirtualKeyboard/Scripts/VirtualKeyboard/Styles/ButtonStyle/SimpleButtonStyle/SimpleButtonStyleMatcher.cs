@@ -2,7 +2,7 @@
 using System.Linq;
 using UnityEngine;
 
-namespace VirtualKeyboard.ScriptableObjects.Configs.ButtonStyle.SimpleButtonStyle
+namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
 {
     public class SimpleButtonStyleMatcher : ScriptableObject, IButtonStyleMatcher<ISimpleButtonStyleElement>
     {

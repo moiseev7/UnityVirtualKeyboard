@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace VirtualKeyboard.ScriptableObjects.Configs.ButtonStyle
+namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle
 {
     /// <summary>
     /// Acts as an Enum for button styles

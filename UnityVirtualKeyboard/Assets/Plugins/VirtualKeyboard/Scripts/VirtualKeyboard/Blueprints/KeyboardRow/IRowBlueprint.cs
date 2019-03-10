@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using VirtualKeyboard.Data.Button;
 
-namespace VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardRow
+namespace VirtualKeyboard.Scripts.VirtualKeyboard.Blueprints.KeyboardRow
 {
     /// <summary>
     ///     Interface for the keyboard row blueprint

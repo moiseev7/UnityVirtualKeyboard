@@ -3,10 +3,10 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardRow
+namespace VirtualKeyboard.Scripts.VirtualKeyboard.Blueprints.KeyboardRow
 {
     /// <summary>
-    ///     Custom inspector for <see cref="KeyboardRow.RowBlueprint" />
+    ///     Custom inspector for <see cref="VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardRow.RowBlueprint" />
     /// </summary>
     [CustomEditor(typeof(RowBlueprint))]
     public class RowBlueprintInspector : Editor
