@@ -1,7 +1,8 @@
 {
     "name": "virtualKeybaord",
     "references": [
-        "Zenject"
+        "Zenject",
+        "UniRx"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
