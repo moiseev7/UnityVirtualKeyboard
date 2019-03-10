@@ -1,21 +1,22 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
+﻿using System.Linq;
+using Zenject;
 
 namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
 {
-    public class SimpleButtonStyleMatcher : ScriptableObject, IButtonStyleMatcher<ISimpleButtonStyleElement>
+    /// <summary>
+    /// Matches a <see cref="ButtonStyleEnum"/> and a style
+    /// </summary>
+    public class SimpleButtonStyleMatcher : IButtonStyleMatcher<ISimpleButtonStyleElement>
     {
         /// <summary>
-        /// The default style container
+        /// Injection of the config
         /// </summary>
-        [SerializeField] private SimpleButtonStyleContainer _defaultStyle;
+        [Inject] private ISimpleButtonStyleMatcherConfig _buttonStyleMatcherConfig;
 
-        [SerializeField] private List<SimpleButtonStylePair> _buttonStylePairs;
         public IButtonStyleContainer<ISimpleButtonStyleElement> GetStyleContainer(ButtonStyleEnum buttonStyleEnum)
         {
-            var foundStyleContainers = (from p in _buttonStylePairs where p.StyleEnum == buttonStyleEnum select p).ToList();
-            return foundStyleContainers.Any() ? foundStyleContainers.First().ButtonStyleContainer : _defaultStyle;
+            var foundStyleContainers = (from p in _buttonStyleMatcherConfig.ButtonStylePairs where p.StyleEnum == buttonStyleEnum select p).ToList();
+            return foundStyleContainers.Any() ? foundStyleContainers.First().ButtonStyleContainer : _buttonStyleMatcherConfig.DefaultStyle;
         }
     }
 }

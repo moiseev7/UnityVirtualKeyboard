@@ -5,7 +5,7 @@ namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButto
     /// <summary>
     /// A generic container of a certain button style 
     /// </summary>
-    [CreateAssetMenu(fileName = "SimpleButtonStyleContainer", menuName = "Virtual Keyboard/Configs/Button Styles/Simple/Style Container")]
+    [CreateAssetMenu(fileName = "SimpleButtonStyleContainer", menuName = "Virtual Keyboard/Styles/Button Styles/Simple/Style Container")]
     public class SimpleButtonStyleContainer : ScriptableObject, IButtonStyleContainer<ISimpleButtonStyleElement>
     {
         /// <summary>

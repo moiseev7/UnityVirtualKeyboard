@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ca40f1ea031b2a428d003c9f839fbeb, type: 3}
+  m_Name: SimpleButtonStyleMatcherConfig
+  m_EditorClassIdentifier: 
+  _defaultStyle: {fileID: 11400000, guid: 3967c00a14957614482fd68acaa30c70, type: 2}
+  _buttonStylePairs:
+  - _buttonStyleEnum: {fileID: 11400000, guid: 2d97bda20ea6ca24fb75e50b4e0aa71a, type: 2}
+    _buttonStyleContainer: {fileID: 11400000, guid: 3967c00a14957614482fd68acaa30c70,
+      type: 2}
+  - _buttonStyleEnum: {fileID: 11400000, guid: 0bd88192ecf7c684faa5d4e44914abb2, type: 2}
+    _buttonStyleContainer: {fileID: 11400000, guid: d737737b7da480141ab88e1fec93b042,
+      type: 2}
