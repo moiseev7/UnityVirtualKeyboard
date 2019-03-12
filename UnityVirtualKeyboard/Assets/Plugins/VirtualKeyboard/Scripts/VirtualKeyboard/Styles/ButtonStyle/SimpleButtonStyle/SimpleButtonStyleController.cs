@@ -23,12 +23,17 @@ namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButto
         {
             if (isInteractable)
             {
-                SetColor(StyleContainer.NormalSettings.BackgroundColor, StyleContainer.NormalSettings.SymbolColor);
+                OnStyleUpdate();
             }
             else
             {
                 SetColor(StyleContainer.DisabledSettings.BackgroundColor, StyleContainer.DisabledSettings.SymbolColor);
             }
+        }
+
+        protected override void OnStyleUpdate()
+        {
+            SetColor(StyleContainer.NormalSettings.BackgroundColor, StyleContainer.NormalSettings.SymbolColor);
         }
 
         public override void OnPointerDown(PointerEventData eventData)

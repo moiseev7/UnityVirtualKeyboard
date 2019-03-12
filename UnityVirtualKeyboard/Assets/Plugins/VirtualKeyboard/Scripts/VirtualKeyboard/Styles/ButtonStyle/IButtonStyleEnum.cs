@@ -2,5 +2,6 @@
 {
     public interface IButtonStyleEnum
     {
+        string Name { get; }
     }
 }

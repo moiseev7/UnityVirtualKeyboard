@@ -26,7 +26,7 @@ namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle
         /// <summary>
         /// Current style enum
         /// </summary>
-        protected ButtonStyleEnum CurrentStyleEnum;
+        protected IButtonStyleEnum CurrentStyleEnum;
 
         /// <summary>
         /// Reference to the style element
@@ -42,10 +42,11 @@ namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle
         public abstract void OnInteractableChange(bool isInteractable);
 
 
-        public void SetStyle(ButtonStyleEnum style)
+        public void SetStyle(IButtonStyleEnum style)
         {
             CurrentStyleEnum = style;
             StyleContainer = _buttonStyleMatcher.GetStyleContainer(CurrentStyleEnum);
+            OnStyleUpdate();
         }
 
         public abstract void OnPointerDown(PointerEventData eventData);
@@ -55,5 +56,7 @@ namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle
         public abstract void OnPointerEnter(PointerEventData eventData);
 
         public abstract void OnPointerExit(PointerEventData eventData);
+
+        protected abstract void OnStyleUpdate();
     }
 }

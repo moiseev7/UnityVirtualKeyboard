@@ -9,6 +9,6 @@
         /// Sets style to the button
         /// </summary>
         /// <param name="style">Style enum</param>
-        void SetStyle(ButtonStyleEnum style);
+        void SetStyle(IButtonStyleEnum style);
     }
 }

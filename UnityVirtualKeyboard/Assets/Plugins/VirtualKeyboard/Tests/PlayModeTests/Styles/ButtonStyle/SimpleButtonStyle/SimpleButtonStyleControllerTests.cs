@@ -50,14 +50,17 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonSty
         [OneTimeSetUp]
         public void BeforeEveryTestOnce()
         {
+            _type1.Name.Returns("Type 1");
+            _type2.Name.Returns("Type 2");
+
             // Generate styles
             _buttonStyleMatcher = Substitute.For<IButtonStyleMatcher<ISimpleButtonStyleElement>>();
 
             _style1 = Substitute.For<IButtonStyleContainer<ISimpleButtonStyleElement>>();
             _style2 = Substitute.For<IButtonStyleContainer<ISimpleButtonStyleElement>>();
-            _buttonStyleMatcher.GetStyleContainer(null).Returns(_style1);
-            _buttonStyleMatcher.GetStyleContainer(_type1).Returns(_style1);
-            _buttonStyleMatcher.GetStyleContainer(_type2).Returns(_style2);
+            _buttonStyleMatcher.GetStyleContainer(Arg.Is<IButtonStyleEnum>(t => t == null)).Returns(_style1);
+            _buttonStyleMatcher.GetStyleContainer(Arg.Is<IButtonStyleEnum>(t => t == _type1)).Returns(_style1);
+            _buttonStyleMatcher.GetStyleContainer(Arg.Is<IButtonStyleEnum>(t => t == _type2)).Returns(_style2);
             // Generate styles
             _style1.NormalSettings.BackgroundColor.Returns(Color.cyan);
             _style1.NormalSettings.SymbolColor.Returns(Color.yellow);
@@ -111,23 +114,34 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonSty
                 Object.DestroyImmediate(graphic.gameObject);
             }
             _symbols.Clear();
-            // Clean controlled objects
-
-            
-
-            
         }
 
-        public class NullStyle : SimpleButtonStyleControllerTests
+        public abstract IEnumerator Normal_Settings_Are_Applied_By_Default();
+        public abstract IEnumerator Disabled_Settings_Are_Applied_On_Button_Disable();
+        public abstract IEnumerator Normal_Settings_Are_Applied_On_Button_Enable();
+        public abstract IEnumerator Highlighted_Settings_Are_Applied_On_Pointer_Enter();
+        public abstract IEnumerator Pressed_Settings_Are_Applied_On_Pointer_Sown();
+        public abstract IEnumerator Normal_Settings_Are_Applied_On_Pointer_Exit();
+        public abstract IEnumerator Highlighted_Settings_Are_Applied_On_Pointer_Up();
+
+        /// <summary>
+        /// Tests for the case when the controller type is null
+        /// </summary>
+        public class NullType : SimpleButtonStyleControllerTests
         {
+            [SetUp]
+            protected virtual void FirstStepOfEveryTest() { }
+
             [UnityTest]
-            public IEnumerator Normal_Settings_Are_Applied_By_Default()
+            public override IEnumerator Normal_Settings_Are_Applied_By_Default()
             {
+                FirstStepOfEveryTest();
                 yield return null;
                 Debug.Log("Checking default background colors:");
                 foreach (var graphic in _backgrounds)
                 {
-                    Assert.AreEqual(Color.cyan, graphic.color);
+                    Debug.Log($"Current color is {graphic.color}");
+                    Assert.AreEqual(Color.cyan, graphic.color,"Error");
                 }
 
                 Debug.Log("Checking default symbol colors:");
@@ -138,8 +152,10 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonSty
             }
 
             [UnityTest]
-            public IEnumerator Disabled_Settings_Are_Applied_On_Button_Disable()
+            public override IEnumerator Disabled_Settings_Are_Applied_On_Button_Disable()
             {
+                FirstStepOfEveryTest();
+
                 yield return null;
                 Debug.Log("Checking default background colors:");
                 foreach (var graphic in _backgrounds)
@@ -172,8 +188,9 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonSty
             }
 
             [UnityTest]
-            public IEnumerator Normal_Settings_Are_Applied_On_Button_Enable()
+            public override IEnumerator Normal_Settings_Are_Applied_On_Button_Enable()
             {
+                FirstStepOfEveryTest();
                 yield return null;
                 Debug.Log("Checking default background colors:");
                 foreach (var graphic in _backgrounds)
@@ -219,8 +236,9 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonSty
             }
 
             [UnityTest]
-            public IEnumerator Higlighted_Settings_Are_Applied_On_Pointer_Enter()
+            public override IEnumerator Highlighted_Settings_Are_Applied_On_Pointer_Enter()
             {
+                FirstStepOfEveryTest();
                 yield return null;
                 Debug.Log("Checking default background colors:");
                 foreach (var graphic in _backgrounds)
@@ -251,8 +269,9 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonSty
             }
 
             [UnityTest]
-            public IEnumerator Pressed_Settings_Are_Applied_On_Pointer_Sown()
+            public override IEnumerator Pressed_Settings_Are_Applied_On_Pointer_Sown()
             {
+                FirstStepOfEveryTest();
                 yield return null;
                 Debug.Log("Checking default background colors:");
                 foreach (var graphic in _backgrounds)
@@ -298,8 +317,9 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonSty
             }
 
             [UnityTest]
-            public IEnumerator Normal_Settings_Are_Applied_On_Pointer_Exit()
+            public override IEnumerator Normal_Settings_Are_Applied_On_Pointer_Exit()
             {
+                FirstStepOfEveryTest();
                 yield return null;
                 Debug.Log("Checking default background colors:");
                 foreach (var graphic in _backgrounds)
@@ -345,8 +365,9 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonSty
             }
 
             [UnityTest]
-            public IEnumerator Highlighted_Settings_Are_Applied_On_Pointer_Up()
+            public override IEnumerator Highlighted_Settings_Are_Applied_On_Pointer_Up()
             {
+                FirstStepOfEveryTest();
                 yield return null;
                 Debug.Log("Checking default background colors:");
                 foreach (var graphic in _backgrounds)
@@ -403,22 +424,25 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonSty
                     Assert.AreEqual(Color.black, graphic.color);
                 }
             }
-        }
 
-        /*[UnityTest]
-        public IEnumerator RunTest1()
-        {
-            // Setup initial state by creating game objects from scratch, loading prefabs/scenes, etc
-    
-            PreInstall();
-    
-            // Call Container.Bind methods
-    
-            PostInstall();
-    
-            // Add test assertions for expected state
-            // Using Container.Resolve or [Inject] fields
-            yield break;
-        }*/
+            /// <summary>
+            /// Tests for the case when the controller type is set to type1 manually
+            /// </summary>
+            public class Type1 : NullType
+            {
+                [SetUp]
+                public void Test()
+                {
+                    Debug.Log("Test");
+                    _testTarget.SetStyle(_type2);
+                }
+
+                protected override void FirstStepOfEveryTest()
+                {
+                    Debug.Log("First step");
+                    _testTarget.SetStyle(_type1);
+                }
+            }
+        }
     }
 }
