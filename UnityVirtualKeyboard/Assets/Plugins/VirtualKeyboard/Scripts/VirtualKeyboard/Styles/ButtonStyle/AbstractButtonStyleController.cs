@@ -10,7 +10,7 @@ namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle
     /// <summary>
     /// Base class for all the style controllers
     /// </summary>
-    public abstract class AbstractButtonStyleController<TStyleElement> : MonoBehaviour, IButtonStyleController, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
+    public abstract class AbstractButtonStyleController<TStyleElement> : MonoBehaviour, IButtonStyleController, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler, IPointerUpHandler
     {
         /// <summary>
         /// Injection of the button that acts as a source of interactable flag
@@ -49,6 +49,8 @@ namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle
         }
 
         public abstract void OnPointerDown(PointerEventData eventData);
+
+        public abstract void OnPointerUp(PointerEventData eventData);
 
         public abstract void OnPointerEnter(PointerEventData eventData);
 

@@ -13,7 +13,7 @@ namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButto
         /// </summary>
         [Inject] private ISimpleButtonStyleMatcherConfig _buttonStyleMatcherConfig;
 
-        public IButtonStyleContainer<ISimpleButtonStyleElement> GetStyleContainer(ButtonStyleEnum buttonStyleEnum)
+        public IButtonStyleContainer<ISimpleButtonStyleElement> GetStyleContainer(IButtonStyleEnum buttonStyleEnum)
         {
             var foundStyleContainers = (from p in _buttonStyleMatcherConfig.ButtonStylePairs where p.StyleEnum == buttonStyleEnum select p).ToList();
             return foundStyleContainers.Any() ? foundStyleContainers.First().ButtonStyleContainer : _buttonStyleMatcherConfig.DefaultStyle;

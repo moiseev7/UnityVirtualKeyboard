@@ -10,6 +10,6 @@
         /// </summary>
         /// <param name="buttonStyleEnum">Button container</param>
         /// <returns>Returns </returns>
-        IButtonStyleContainer<TStyleSettings> GetStyleContainer(ButtonStyleEnum buttonStyleEnum);
+        IButtonStyleContainer<TStyleSettings> GetStyleContainer(IButtonStyleEnum buttonStyleEnum);
     }
 }

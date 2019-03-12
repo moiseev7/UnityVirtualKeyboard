@@ -21,7 +21,6 @@ namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButto
 
         public override void OnInteractableChange(bool isInteractable)
         {
-            Debug.Log($"Interactable is set to {isInteractable}");
             if (isInteractable)
             {
                 SetColor(StyleContainer.NormalSettings.BackgroundColor, StyleContainer.NormalSettings.SymbolColor);
@@ -34,19 +33,21 @@ namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButto
 
         public override void OnPointerDown(PointerEventData eventData)
         {
-            Debug.Log("OnPointerDown");
             SetColor(StyleContainer.PressedSettings.BackgroundColor, StyleContainer.PressedSettings.SymbolColor);
+        }
+
+        public override void OnPointerUp(PointerEventData eventData)
+        {
+            SetColor(StyleContainer.HighlightedSettings.BackgroundColor, StyleContainer.HighlightedSettings.SymbolColor);
         }
 
         public override void OnPointerEnter(PointerEventData eventData)
         {
-            Debug.Log("OnPointerEnter");
             SetColor(StyleContainer.HighlightedSettings.BackgroundColor, StyleContainer.HighlightedSettings.SymbolColor);
         }
 
         public override void OnPointerExit(PointerEventData eventData)
         {
-            Debug.Log("OnPointerExit");
             SetColor(StyleContainer.NormalSettings.BackgroundColor, StyleContainer.NormalSettings.SymbolColor);
         }
 
