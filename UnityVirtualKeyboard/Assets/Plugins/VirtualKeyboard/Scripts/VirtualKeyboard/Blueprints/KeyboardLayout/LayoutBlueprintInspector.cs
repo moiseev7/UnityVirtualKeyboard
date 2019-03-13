@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace VirtualKeyboard.Scripts.VirtualKeyboard.Blueprints.KeyboardLayout
+namespace VirtualKeyboard.Blueprints.KeyboardLayout
 {
     [CustomEditor(typeof(LayoutBlueprint))]
     public class LayoutBlueprintInspector : Editor

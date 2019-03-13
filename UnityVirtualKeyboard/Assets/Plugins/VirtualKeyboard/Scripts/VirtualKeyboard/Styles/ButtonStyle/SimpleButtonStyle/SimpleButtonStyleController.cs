@@ -1,10 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using Zenject;
 
-namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
+namespace VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
 {
     /// <summary>
     /// Controller for the simple button style.

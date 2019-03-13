@@ -1,8 +1,8 @@
 using UnityEngine;
-using VirtualKeyboard.Scripts.VirtualKeyboard.Styles;
+using VirtualKeyboard.Styles;
 using Zenject;
 
-namespace VirtualKeyboard.Scripts.VirtualKeyboard
+namespace VirtualKeyboard
 {
     /// <summary>
     /// Installer for the virtual keyboard 

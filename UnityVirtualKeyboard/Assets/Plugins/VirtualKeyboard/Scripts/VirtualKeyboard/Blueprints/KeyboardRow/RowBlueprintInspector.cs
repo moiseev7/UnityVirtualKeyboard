@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace VirtualKeyboard.Scripts.VirtualKeyboard.Blueprints.KeyboardRow
+namespace VirtualKeyboard.Blueprints.KeyboardRow
 {
     /// <summary>
     ///     Custom inspector for <see cref="VirtualKeyboard.ScriptableObjects.Blueprints.KeyboardRow.RowBlueprint" />

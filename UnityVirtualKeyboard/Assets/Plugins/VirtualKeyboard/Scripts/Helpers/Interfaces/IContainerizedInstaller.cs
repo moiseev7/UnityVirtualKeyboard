@@ -1,6 +1,6 @@
 ﻿using Zenject;
 
-namespace VirtualKeyboard.Scripts.Helpers.Interfaces
+namespace Helpers.Interfaces
 {
     /// <summary>
     /// Interface for a Zenject Installer with container provided

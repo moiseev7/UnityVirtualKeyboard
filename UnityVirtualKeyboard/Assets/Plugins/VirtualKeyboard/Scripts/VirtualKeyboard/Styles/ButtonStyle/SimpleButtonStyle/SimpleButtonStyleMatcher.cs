@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using Zenject;
 
-namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
+namespace VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
 {
     /// <summary>
     /// Matches a <see cref="ButtonStyleEnum"/> and a style

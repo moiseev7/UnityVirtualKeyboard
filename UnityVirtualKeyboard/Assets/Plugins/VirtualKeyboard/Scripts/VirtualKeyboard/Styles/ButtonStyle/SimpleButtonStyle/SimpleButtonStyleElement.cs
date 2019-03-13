@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
+namespace VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
 {
     /// <summary>
     ///     Stores settings element for a simple button

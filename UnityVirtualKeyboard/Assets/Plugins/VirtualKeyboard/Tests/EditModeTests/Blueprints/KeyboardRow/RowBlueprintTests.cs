@@ -3,7 +3,6 @@ using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
 using VirtualKeyboard.Data.Button;
-using VirtualKeyboard.Scripts.VirtualKeyboard.Blueprints.KeyboardRow;
 
 namespace VirtualKeyboard.Blueprints.KeyboardRow
 {

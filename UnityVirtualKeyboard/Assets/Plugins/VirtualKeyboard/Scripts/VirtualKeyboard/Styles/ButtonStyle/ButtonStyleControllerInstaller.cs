@@ -2,7 +2,7 @@
 using UnityEngine.UI;
 using Zenject;
 
-namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle
+namespace VirtualKeyboard.Styles.ButtonStyle
 {
     /// <summary>
     /// Installer for a button style controller

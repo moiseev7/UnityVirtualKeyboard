@@ -3,7 +3,7 @@ using Helpers.Interfaces;
 using UnityEngine;
 using VirtualKeyboard.Data.Button;
 
-namespace VirtualKeyboard.Scripts.VirtualKeyboard.Blueprints.KeyboardRow
+namespace VirtualKeyboard.Blueprints.KeyboardRow
 {
     /// <summary>
     ///     Blueprint of a keyboard row

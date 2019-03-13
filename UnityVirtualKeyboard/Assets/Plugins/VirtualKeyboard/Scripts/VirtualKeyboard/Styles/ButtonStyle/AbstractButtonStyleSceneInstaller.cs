@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using VirtualKeyboard.Scripts.Helpers.Interfaces;
+﻿using Helpers.Interfaces;
+using UnityEngine;
 using Zenject;
 
-namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle
+namespace VirtualKeyboard.Styles.ButtonStyle
 {
     /// <summary>
     /// Base class for all the button style scene installers

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
+namespace VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
 {
     /// <summary>
     /// A generic container of a certain button style 

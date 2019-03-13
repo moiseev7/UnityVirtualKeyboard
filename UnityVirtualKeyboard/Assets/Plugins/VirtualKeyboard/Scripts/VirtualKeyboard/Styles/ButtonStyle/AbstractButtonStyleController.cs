@@ -1,11 +1,10 @@
-﻿using System;
-using UniRx;
+﻿using UniRx;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Zenject;
 
-namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle
+namespace VirtualKeyboard.Styles.ButtonStyle
 {
     /// <summary>
     /// Base class for all the style controllers

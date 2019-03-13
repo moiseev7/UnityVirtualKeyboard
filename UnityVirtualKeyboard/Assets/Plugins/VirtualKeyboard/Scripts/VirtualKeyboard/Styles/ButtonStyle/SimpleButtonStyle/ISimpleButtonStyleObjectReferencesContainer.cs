@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine.UI;
 
-namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
+namespace VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
 {
     /// <summary>
     /// Interface for SimpleButtonStyleObjectReferencesContainer

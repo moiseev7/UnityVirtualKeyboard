@@ -1,9 +1,9 @@
-﻿using UnityEngine;
-using VirtualKeyboard.Scripts.Helpers.Interfaces;
-using VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle;
+﻿using Helpers.Interfaces;
+using UnityEngine;
+using VirtualKeyboard.Styles.ButtonStyle;
 using Zenject;
 
-namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles
+namespace VirtualKeyboard.Styles
 {
     /// <summary>
     /// Installer for the keyboard styles

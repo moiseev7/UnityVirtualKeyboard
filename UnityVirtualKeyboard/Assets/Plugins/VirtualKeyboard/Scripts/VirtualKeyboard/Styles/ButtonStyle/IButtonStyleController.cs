@@ -1,4 +1,4 @@
-﻿namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle
+﻿namespace VirtualKeyboard.Styles.ButtonStyle
 {
     /// <summary>
     /// Interface for SimpleButtonStyleController

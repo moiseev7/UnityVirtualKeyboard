@@ -6,8 +6,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.UI;
-using VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle;
-using VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle;
+using VirtualKeyboard.Styles.ButtonStyle;
+using VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle;
 using Zenject;
 
 namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonStyle

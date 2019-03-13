@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using VirtualKeyboard.Scripts.Helpers.Interfaces;
 using Zenject;
 
-namespace VirtualKeyboard.Scripts.VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
+namespace VirtualKeyboard.Styles.ButtonStyle.SimpleButtonStyle
 {
     /// <summary>
     /// Scene installer for the simple button style
