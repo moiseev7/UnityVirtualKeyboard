@@ -25,7 +25,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonSty
         /// Reference to an object that matches a button type with a specific button style
         /// </summary>
         IButtonStyleMatcher<ISimpleButtonStyleElement> _buttonStyleMatcher;
-        
+
         /// <summary>
         /// Button that acts as a source of disable signals
         /// </summary>
@@ -107,12 +107,14 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonSty
             {
                 Object.DestroyImmediate(graphic.gameObject);
             }
+
             _backgrounds.Clear();
 
             foreach (var graphic in _symbols.AsReadOnly())
             {
                 Object.DestroyImmediate(graphic.gameObject);
             }
+
             _symbols.Clear();
         }
 
@@ -130,7 +132,9 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonSty
         public class NullType : SimpleButtonStyleControllerTests
         {
             [SetUp]
-            protected virtual void FirstStepOfEveryTest() { }
+            protected virtual void FirstStepOfEveryTest()
+            {
+            }
 
             [UnityTest]
             public override IEnumerator Normal_Settings_Are_Applied_By_Default()
@@ -141,7 +145,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonSty
                 foreach (var graphic in _backgrounds)
                 {
                     Debug.Log($"Current color is {graphic.color}");
-                    Assert.AreEqual(Color.cyan, graphic.color,"Error");
+                    Assert.AreEqual(Color.cyan, graphic.color, "Error");
                 }
 
                 Debug.Log("Checking default symbol colors:");
@@ -433,14 +437,321 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Styles.ButtonStyle.SimpleButtonSty
                 [SetUp]
                 public void Test()
                 {
-                    Debug.Log("Test");
                     _testTarget.SetStyle(_type2);
                 }
 
                 protected override void FirstStepOfEveryTest()
                 {
-                    Debug.Log("First step");
                     _testTarget.SetStyle(_type1);
+                }
+            }
+
+           
+        }
+
+        /// <summary>
+        /// Tests for the case when the controller type is null
+        /// </summary>
+        public class Type2 : SimpleButtonStyleControllerTests
+        {
+            [SetUp]
+            protected virtual void FirstStepOfEveryTest()
+            {
+                _style2.NormalSettings.BackgroundColor.Returns(Color.black);
+                _style2.NormalSettings.SymbolColor.Returns(Color.white);
+                _testTarget.SetStyle(_type2);
+            }
+
+            [UnityTest]
+            public override IEnumerator Normal_Settings_Are_Applied_By_Default()
+            {
+                FirstStepOfEveryTest();
+                yield return null;
+                Debug.Log("Checking default background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Debug.Log($"Current color is {graphic.color}");
+                    Assert.AreEqual(Color.black, graphic.color, "Error");
+                }
+
+                Debug.Log("Checking default symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.white, graphic.color);
+                }
+            }
+
+            [UnityTest]
+            public override IEnumerator Disabled_Settings_Are_Applied_On_Button_Disable()
+            {
+                FirstStepOfEveryTest();
+
+                yield return null;
+                Debug.Log("Checking default background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.black, graphic.color);
+                }
+
+                Debug.Log("Checking default symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.white, graphic.color);
+                }
+
+                _style2.DisabledSettings.BackgroundColor.Returns(Color.red);
+                _style2.DisabledSettings.SymbolColor.Returns(Color.blue);
+
+                _sourceButton.interactable = false;
+                yield return null;
+                Debug.Log("Checking disabled background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.red, graphic.color);
+                }
+
+                Debug.Log("Checking disabled symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.blue, graphic.color);
+                }
+            }
+
+            [UnityTest]
+            public override IEnumerator Normal_Settings_Are_Applied_On_Button_Enable()
+            {
+                FirstStepOfEveryTest();
+                yield return null;
+                Debug.Log("Checking default background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.black, graphic.color);
+                }
+
+                Debug.Log("Checking default symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.white, graphic.color);
+                }
+
+                _style2.DisabledSettings.BackgroundColor.Returns(Color.red);
+                _style2.DisabledSettings.SymbolColor.Returns(Color.blue);
+
+                _sourceButton.interactable = false;
+                yield return null;
+                Debug.Log("Checking disabled background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.red, graphic.color);
+                }
+
+                Debug.Log("Checking disabled symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.blue, graphic.color);
+                }
+
+                _sourceButton.interactable = true;
+                yield return null;
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.black, graphic.color);
+                }
+
+                Debug.Log("Checking default symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.white, graphic.color);
+                }
+            }
+
+            [UnityTest]
+            public override IEnumerator Highlighted_Settings_Are_Applied_On_Pointer_Enter()
+            {
+                FirstStepOfEveryTest();
+                yield return null;
+                Debug.Log("Checking default background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.black, graphic.color);
+                }
+
+                Debug.Log("Checking default symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.white, graphic.color);
+                }
+
+                _style2.HighlightedSettings.BackgroundColor.Returns(Color.gray);
+                _style2.HighlightedSettings.SymbolColor.Returns(Color.black);
+                _testTarget.OnPointerEnter(null);
+                Debug.Log("Checking highlighted background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.gray, graphic.color);
+                }
+
+                Debug.Log("Checking highlighted symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.black, graphic.color);
+                }
+            }
+
+            [UnityTest]
+            public override IEnumerator Pressed_Settings_Are_Applied_On_Pointer_Sown()
+            {
+                FirstStepOfEveryTest();
+                yield return null;
+                Debug.Log("Checking default background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.black, graphic.color);
+                }
+
+                Debug.Log("Checking default symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.white, graphic.color);
+                }
+
+                _style2.HighlightedSettings.BackgroundColor.Returns(Color.gray);
+                _style2.HighlightedSettings.SymbolColor.Returns(Color.black);
+                _testTarget.OnPointerEnter(null);
+                Debug.Log("Checking highlighted background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.gray, graphic.color);
+                }
+
+                Debug.Log("Checking highlighted symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.black, graphic.color);
+                }
+
+                _style2.PressedSettings.BackgroundColor.Returns(Color.red);
+                _style2.PressedSettings.SymbolColor.Returns(Color.white);
+                _testTarget.OnPointerDown(null);
+                Debug.Log("Checking pressed background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.red, graphic.color);
+                }
+
+                Debug.Log("Checking pressed symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.white, graphic.color);
+                }
+            }
+
+            [UnityTest]
+            public override IEnumerator Normal_Settings_Are_Applied_On_Pointer_Exit()
+            {
+                FirstStepOfEveryTest();
+                yield return null;
+                Debug.Log("Checking default background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.black, graphic.color);
+                }
+
+                Debug.Log("Checking default symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.white, graphic.color);
+                }
+
+                _style2.HighlightedSettings.BackgroundColor.Returns(Color.gray);
+                _style2.HighlightedSettings.SymbolColor.Returns(Color.black);
+                _testTarget.OnPointerEnter(null);
+                Debug.Log("Checking highlighted background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.gray, graphic.color);
+                }
+
+                Debug.Log("Checking highlighted symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.black, graphic.color);
+                }
+
+                _style2.PressedSettings.BackgroundColor.Returns(Color.red);
+                _style2.PressedSettings.SymbolColor.Returns(Color.white);
+                _testTarget.OnPointerExit(null);
+                Debug.Log("Checking default background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.black, graphic.color);
+                }
+
+                Debug.Log("Checking default symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.white, graphic.color);
+                }
+            }
+
+            [UnityTest]
+            public override IEnumerator Highlighted_Settings_Are_Applied_On_Pointer_Up()
+            {
+                FirstStepOfEveryTest();
+                yield return null;
+                Debug.Log("Checking default background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.black, graphic.color);
+                }
+
+                Debug.Log("Checking default symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.white, graphic.color);
+                }
+
+                _style2.HighlightedSettings.BackgroundColor.Returns(Color.gray);
+                _style2.HighlightedSettings.SymbolColor.Returns(Color.black);
+                _testTarget.OnPointerEnter(null);
+                Debug.Log("Checking highlighted background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.gray, graphic.color);
+                }
+
+                Debug.Log("Checking highlighted symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.black, graphic.color);
+                }
+
+                _style2.PressedSettings.BackgroundColor.Returns(Color.red);
+                _style2.PressedSettings.SymbolColor.Returns(Color.white);
+                _testTarget.OnPointerDown(null);
+                Debug.Log("Checking pressed background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.red, graphic.color);
+                }
+
+                Debug.Log("Checking pressed symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.white, graphic.color);
+                }
+
+                _testTarget.OnPointerUp(null);
+                Debug.Log("Checking highlighted background colors:");
+                foreach (var graphic in _backgrounds)
+                {
+                    Assert.AreEqual(Color.gray, graphic.color);
+                }
+
+                Debug.Log("Checking highlighted symbol colors:");
+                foreach (var graphic in _symbols)
+                {
+                    Assert.AreEqual(Color.black, graphic.color);
                 }
             }
         }
