@@ -2,7 +2,8 @@
     "name": "virtualKeybaord",
     "references": [
         "Zenject",
-        "UniRx"
+        "UniRx",
+        "Unity.TextMeshPro"
     ],
     "optionalUnityReferences": [],
     "includePlatforms": [],

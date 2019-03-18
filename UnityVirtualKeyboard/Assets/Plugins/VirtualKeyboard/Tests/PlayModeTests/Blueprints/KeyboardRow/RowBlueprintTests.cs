@@ -2,9 +2,10 @@
 using System.Linq;
 using NUnit.Framework;
 using UnityEngine;
+using VirtualKeyboard.Blueprints.KeyboardRow;
 using VirtualKeyboard.Data.Button;
 
-namespace VirtualKeyboard.Blueprints.KeyboardRow
+namespace VirtualKeyboard.Tests.PlayModeTests.Blueprints.KeyboardRow
 {
     /// <summary>
     /// Tests for <see cref="RowBlueprint"/>
