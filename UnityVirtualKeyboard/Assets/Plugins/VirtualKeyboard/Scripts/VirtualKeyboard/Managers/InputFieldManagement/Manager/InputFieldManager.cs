@@ -1,6 +1,10 @@
 ﻿using System;
+using JetBrains.Annotations;
 using UniRx;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using VirtualKeyboard.Managers.InputFieldManagement.Configs;
 using Zenject;
 
 namespace VirtualKeyboard.Managers.InputFieldManagement.Manager
@@ -10,7 +14,10 @@ namespace VirtualKeyboard.Managers.InputFieldManagement.Manager
     /// </summary>
     public class InputFieldManager : IInitializable, IInputFieldSelectionManager, IInputFieldTypingManager, IInputFieldSubmitManager
     {
-
+        /// <summary>
+        /// Injection fo the config container
+        /// </summary>
+        [Inject] private IInputFieldSelectionConfigContainer<Selectable> _configContainer;
 
         #region Observables
         /// <summary>
@@ -23,7 +30,7 @@ namespace VirtualKeyboard.Managers.InputFieldManagement.Manager
         /// <summary>
         /// Observable of the selected input field rect
         /// </summary>
-        private Subject<Rect> _selectedRectAsObservable = new Subject<Rect>();
+        private Subject<Rect?> _selectedRectAsObservable = new Subject<Rect?>();
 
         /// <summary>
         /// Observable of the parent canvas of the selected input field
@@ -50,7 +57,7 @@ namespace VirtualKeyboard.Managers.InputFieldManagement.Manager
         /// <summary>
         /// Observable of the selected input field rect
         /// </summary>
-        public IObservable<Rect> SelectedRectAsObservable => _selectedRectAsObservable;
+        public IObservable<Rect?> SelectedRectAsObservable => _selectedRectAsObservable;
 
         /// <summary>
         /// Observable of the parent canvas of the selected input field
@@ -68,9 +75,29 @@ namespace VirtualKeyboard.Managers.InputFieldManagement.Manager
         public IObservable<Texture2D> SubmitIconAsObservable => _submitIconAsObservable;
         #endregion
 
+        /// <summary>
+        /// Current config
+        /// </summary>
+        [CanBeNull] private IInputFieldSelectionConfig<Selectable> _currentConfig;
+
+        /// <summary>
+        /// Currently selected selectable
+        /// </summary>
+        private Selectable _currentSelectable;
+
         public void Initialize()
         {
-            
+            EventSystem.current.ObserveEveryValueChanged(system => system.currentSelectedGameObject)
+                .Select(obj => obj?.GetComponent<Selectable>())
+                .Subscribe(selectable =>
+                {
+                    _currentConfig = _configContainer.GetConfig(selectable);
+                    _currentSelectable = _currentConfig != null ? selectable : null;
+
+
+                    _isFieldSelectedAsObservable.OnNext(_currentConfig != null);
+                    _selectedRectAsObservable.OnNext(_currentSelectable?.GetComponent<RectTransform>()?.rect);
+                });
         }
         
         public void Type(string symbolToType)

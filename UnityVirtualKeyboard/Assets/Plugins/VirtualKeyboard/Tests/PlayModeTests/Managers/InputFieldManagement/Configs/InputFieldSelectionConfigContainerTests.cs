@@ -14,26 +14,26 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Conf
     /// </summary>
     public abstract class InputFieldSelectionConfigContainerTests
     {
-        protected TMP_InputField _tmpInputField;
-        protected InputField _unityInputField;
-        protected InputFieldSelectionConfigContainer _target;
-        protected UnityInputFieldSelectionConfig _unityInputFieldSelectionConfig;
-        protected TMP_InputFieldSelectionConfig _tmpInputFieldSelectionConfig;
+        protected TMP_InputField TmpInputField;
+        public InputField UnityInputField;
+        public InputFieldSelectionConfigContainer Target;
+        protected UnityInputFieldSelectionConfig UnityInputFieldSelectionConfig;
+        protected TMP_InputFieldSelectionConfig TmpInputFieldSelectionConfig;
 
         [SetUp]
         public void BeforeEveryTest()
         {
-            _tmpInputField = new GameObject().AddComponent<TMP_InputField>();
+            TmpInputField = new GameObject().AddComponent<TMP_InputField>();
             var textComponent = new GameObject().AddComponent<TextMeshProUGUI>();
-            textComponent.transform.SetParent(_tmpInputField.transform);
-            _tmpInputField.textComponent = textComponent;
-            _tmpInputField.textViewport = _tmpInputField.gameObject.AddComponent<RectTransform>();
+            textComponent.transform.SetParent(TmpInputField.transform);
+            TmpInputField.textComponent = textComponent;
+            TmpInputField.textViewport = TmpInputField.gameObject.AddComponent<RectTransform>();
 
-            _unityInputField = new GameObject().AddComponent<InputField>();
-            _target = ScriptableObject.CreateInstance<InputFieldSelectionConfigContainer>();
+            UnityInputField = new GameObject().AddComponent<InputField>();
+            Target = ScriptableObject.CreateInstance<InputFieldSelectionConfigContainer>();
 
-            _unityInputFieldSelectionConfig = ScriptableObject.CreateInstance<UnityInputFieldSelectionConfig>();
-            _tmpInputFieldSelectionConfig = ScriptableObject.CreateInstance<TMP_InputFieldSelectionConfig>();
+            UnityInputFieldSelectionConfig = ScriptableObject.CreateInstance<UnityInputFieldSelectionConfig>();
+            TmpInputFieldSelectionConfig = ScriptableObject.CreateInstance<TMP_InputFieldSelectionConfig>();
 
             InitializeTarget();
         }
@@ -43,11 +43,11 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Conf
         [TearDown]
         public void AfterEveryTest()
         {
-            Object.Destroy(_tmpInputField.gameObject);
-            Object.Destroy(_unityInputField.gameObject);
-            Object.Destroy(_target);
-            Object.Destroy(_unityInputFieldSelectionConfig);
-            Object.Destroy(_tmpInputFieldSelectionConfig);
+            Object.Destroy(TmpInputField.gameObject);
+            Object.Destroy(UnityInputField.gameObject);
+            Object.Destroy(Target);
+            Object.Destroy(UnityInputFieldSelectionConfig);
+            Object.Destroy(TmpInputFieldSelectionConfig);
         }
 
         [Test]
@@ -69,39 +69,39 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Conf
         {
             protected override void InitializeTarget()
             {
-                _target.Initialize(new List<AbstractInputFieldSelectionConfig> {_unityInputFieldSelectionConfig});
+                Target.Initialize(new List<AbstractInputFieldSelectionConfig> {UnityInputFieldSelectionConfig});
             }
 
             [Test]
             public override void Select_Null()
             {
-                Assert.AreEqual(null, _target.GetConfig(null));
+                Assert.AreEqual(null, Target.GetConfig(null));
             }
 
             [Test]
             public override void Select_UnityInputField()
             {
-                Assert.AreEqual(_unityInputFieldSelectionConfig, _target.GetConfig(_unityInputField));
+                Assert.AreEqual(UnityInputFieldSelectionConfig, Target.GetConfig(UnityInputField));
             }
 
             [Test]
             public override void Select_TMPInputField()
             {
-                Assert.AreEqual(null, _target.GetConfig(_tmpInputField));
+                Assert.AreEqual(null, Target.GetConfig(TmpInputField));
             }
 
             [Test]
             public override void Select_Suitable_Field_Then_Null()
             {
-                Assert.AreEqual(_unityInputFieldSelectionConfig, _target.GetConfig(_unityInputField));
-                Assert.AreEqual(null, _target.GetConfig(null));
+                Assert.AreEqual(UnityInputFieldSelectionConfig, Target.GetConfig(UnityInputField));
+                Assert.AreEqual(null, Target.GetConfig(null));
             }
 
             [Test]
             public override void Select_Null_Then_Suitable_Field()
             {
-                Assert.AreEqual(null, _target.GetConfig(null));
-                Assert.AreEqual(_unityInputFieldSelectionConfig, _target.GetConfig(_unityInputField));
+                Assert.AreEqual(null, Target.GetConfig(null));
+                Assert.AreEqual(UnityInputFieldSelectionConfig, Target.GetConfig(UnityInputField));
             }
         }
 
@@ -109,39 +109,39 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Conf
         {
             protected override void InitializeTarget()
             {
-                _target.Initialize(new List<AbstractInputFieldSelectionConfig> {_tmpInputFieldSelectionConfig});
+                Target.Initialize(new List<AbstractInputFieldSelectionConfig> {TmpInputFieldSelectionConfig});
             }
 
             [Test]
             public override void Select_Null()
             {
-                Assert.AreEqual(null, _target.GetConfig(null));
+                Assert.AreEqual(null, Target.GetConfig(null));
             }
 
             [Test]
             public override void Select_UnityInputField()
             {
-                Assert.AreEqual(null, _target.GetConfig(_unityInputField));
+                Assert.AreEqual(null, Target.GetConfig(UnityInputField));
             }
 
             [Test]
             public override void Select_TMPInputField()
             {
-                Assert.AreEqual(_tmpInputFieldSelectionConfig, _target.GetConfig(_tmpInputField));
+                Assert.AreEqual(TmpInputFieldSelectionConfig, Target.GetConfig(TmpInputField));
             }
 
             [Test]
             public override void Select_Suitable_Field_Then_Null()
             {
-                Assert.AreEqual(_tmpInputFieldSelectionConfig, _target.GetConfig(_tmpInputField));
-                Assert.AreEqual(null, _target.GetConfig(null));
+                Assert.AreEqual(TmpInputFieldSelectionConfig, Target.GetConfig(TmpInputField));
+                Assert.AreEqual(null, Target.GetConfig(null));
             }
 
             [Test]
             public override void Select_Null_Then_Suitable_Field()
             {
-                Assert.AreEqual(null, _target.GetConfig(null));
-                Assert.AreEqual(_tmpInputFieldSelectionConfig, _target.GetConfig(_tmpInputField));
+                Assert.AreEqual(null, Target.GetConfig(null));
+                Assert.AreEqual(TmpInputFieldSelectionConfig, Target.GetConfig(TmpInputField));
             }
         }
 
@@ -149,39 +149,39 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Conf
         {
             protected override void InitializeTarget()
             {
-                _target.Initialize(new List<AbstractInputFieldSelectionConfig> { _tmpInputFieldSelectionConfig, _unityInputFieldSelectionConfig });
+                Target.Initialize(new List<AbstractInputFieldSelectionConfig> { TmpInputFieldSelectionConfig, UnityInputFieldSelectionConfig });
             }
 
             [Test]
             public override void Select_Null()
             {
-                Assert.AreEqual(null, _target.GetConfig(null));
+                Assert.AreEqual(null, Target.GetConfig(null));
             }
 
             [Test]
             public override void Select_UnityInputField()
             {
-                Assert.AreEqual(_unityInputFieldSelectionConfig, _target.GetConfig(_unityInputField));
+                Assert.AreEqual(UnityInputFieldSelectionConfig, Target.GetConfig(UnityInputField));
             }
 
             [Test]
             public override void Select_TMPInputField()
             {
-                Assert.AreEqual(_tmpInputFieldSelectionConfig, _target.GetConfig(_tmpInputField));
+                Assert.AreEqual(TmpInputFieldSelectionConfig, Target.GetConfig(TmpInputField));
             }
 
             [Test]
             public override void Select_Suitable_Field_Then_Null()
             {
-                Assert.AreEqual(_tmpInputFieldSelectionConfig, _target.GetConfig(_tmpInputField));
-                Assert.AreEqual(null, _target.GetConfig(null));
+                Assert.AreEqual(TmpInputFieldSelectionConfig, Target.GetConfig(TmpInputField));
+                Assert.AreEqual(null, Target.GetConfig(null));
             }
 
             [Test]
             public override void Select_Null_Then_Suitable_Field()
             {
-                Assert.AreEqual(null, _target.GetConfig(null));
-                Assert.AreEqual(_unityInputFieldSelectionConfig, _target.GetConfig(_unityInputField));
+                Assert.AreEqual(null, Target.GetConfig(null));
+                Assert.AreEqual(UnityInputFieldSelectionConfig, Target.GetConfig(UnityInputField));
             }
         }
     }
