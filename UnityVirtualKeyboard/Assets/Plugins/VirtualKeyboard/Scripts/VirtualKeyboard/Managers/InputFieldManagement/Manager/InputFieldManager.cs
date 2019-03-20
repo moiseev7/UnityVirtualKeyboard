@@ -113,7 +113,10 @@ namespace VirtualKeyboard.Managers.InputFieldManagement.Manager
 
         public void DeleteLast()
         {
-            
+            if (_currentConfig != null && _currentSelectable != null)
+            {
+                _currentConfig.DeleteLastSymbolAction(_currentSelectable);
+            }
         }
         
         public void Submit()

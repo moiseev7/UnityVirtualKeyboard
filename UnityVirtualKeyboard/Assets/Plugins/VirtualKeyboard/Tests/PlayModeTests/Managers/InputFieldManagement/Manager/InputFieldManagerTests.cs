@@ -14,7 +14,7 @@ using Zenject;
 namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Manager
 {
     /// <summary>
-    /// Tests for InputFieldManager
+    ///     Tests for InputFieldManager
     /// </summary>
     public abstract class InputFieldManagerTests : ZenjectIntegrationTestFixture
     {
@@ -27,7 +27,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
         protected Canvas Canvas;
         protected EventSystem EventSystem;
 
-        
+
         protected bool? SelectionFlag;
         protected Rect? SelectedRect;
         protected Canvas ParentCanvas;
@@ -51,7 +51,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
             TmpInputField.textComponent = textComponent;
             TmpInputField.transform.SetParent(Canvas.transform);
             TmpInputField.gameObject.AddComponent<RectTransform>();
-            TmpInputField.textViewport = (RectTransform)TmpInputField.transform;
+            TmpInputField.textViewport = (RectTransform) TmpInputField.transform;
 
             // Unity InputField setup
             UnityInputField = new GameObject().AddComponent<InputField>();
@@ -87,10 +87,11 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
             _compositeDisposable.Add(Target.IsFieldSelectedAsObservable.Subscribe(flag => SelectionFlag = flag));
             _compositeDisposable.Add(Target.SelectedRectAsObservable.Subscribe(rect => SelectedRect = rect));
             _compositeDisposable.Add(Target.ParentCanvasAsObservable.Subscribe(canvas => ParentCanvas = canvas));
-            _compositeDisposable.Add(Target.SupportsSubmitAsObservable.Subscribe(supports => SupportsSubmit = supports));
+            _compositeDisposable.Add(
+                Target.SupportsSubmitAsObservable.Subscribe(supports => SupportsSubmit = supports));
             _compositeDisposable.Add(Target.SubmitIconAsObservable.Subscribe(icon => SubmitIcon = icon));
         }
-        
+
         [TearDown]
         public void AfterEveryTest()
         {
@@ -103,7 +104,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
         }
 
         /// <summary>
-        /// Here we specify which config to use
+        ///     Here we specify which config to use
         /// </summary>
         protected abstract void InitializeConfigsContainer();
 
@@ -122,22 +123,21 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
         public abstract IEnumerator Try_Type_To_Null();
         public abstract IEnumerator Try_Type_To_Not_Suitable_Field();
 
-        public abstract IEnumerator Delete_Submit_To_Suitable_Field();
-        public abstract IEnumerator Delete_Submit_To_Null();
-        public abstract IEnumerator Delete_Submit_To_Not_Suitable_Field();
+        public abstract IEnumerator Send_Delete_To_Suitable_Field();
+        public abstract IEnumerator Send_Delete_Submit_To_Null();
+        public abstract IEnumerator Send_Delete_To_Not_Suitable_Field();
 
         public class TMPOnly : InputFieldManagerTests
         {
             protected override void InitializeConfigsContainer()
             {
                 ConfigContainer = new InputFieldSelectionConfigContainer();
-                ConfigContainer.Initialize(new List<AbstractInputFieldSelectionConfig>{TmpInputFieldSelectionConfig});
+                ConfigContainer.Initialize(new List<AbstractInputFieldSelectionConfig> {TmpInputFieldSelectionConfig});
             }
 
             [UnityTest]
             public override IEnumerator Select_Unity_Input_Field()
             {
-
                 EventSystem.current.SetSelectedGameObject(UnityInputField.gameObject);
                 yield return null;
                 Assert.AreEqual(false, SelectionFlag);
@@ -150,11 +150,10 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
             [UnityTest]
             public override IEnumerator Select_TMP_Input_Field()
             {
-
                 EventSystem.current.SetSelectedGameObject(TmpInputField.gameObject);
                 yield return null;
                 Assert.AreEqual(true, SelectionFlag);
-                Assert.AreEqual(((RectTransform)TmpInputField.transform).rect, SelectedRect);
+                Assert.AreEqual(((RectTransform) TmpInputField.transform).rect, SelectedRect);
                 Assert.AreEqual(Canvas, ParentCanvas);
                 Assert.AreEqual(false, SupportsSubmit);
                 Assert.AreEqual(null, SubmitIcon);
@@ -163,11 +162,10 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
             [UnityTest]
             public override IEnumerator Select_Suitable_Input_Field_Then_Null()
             {
-
                 EventSystem.current.SetSelectedGameObject(TmpInputField.gameObject);
                 yield return null;
                 Assert.AreEqual(true, SelectionFlag);
-                Assert.AreEqual(((RectTransform)TmpInputField.transform).rect, SelectedRect);
+                Assert.AreEqual(((RectTransform) TmpInputField.transform).rect, SelectedRect);
                 Assert.AreEqual(Canvas, ParentCanvas);
                 Assert.AreEqual(false, SupportsSubmit);
                 Assert.AreEqual(null, SubmitIcon);
@@ -184,8 +182,6 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
             [UnityTest]
             public override IEnumerator Select_Null_Field_Then_Suitable_Input()
             {
-                
-
                 EventSystem.current.SetSelectedGameObject(UnityInputField.gameObject);
                 yield return null;
                 Assert.AreEqual(false, SelectionFlag);
@@ -197,7 +193,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
                 EventSystem.current.SetSelectedGameObject(TmpInputField.gameObject);
                 yield return null;
                 Assert.AreEqual(true, SelectionFlag);
-                Assert.AreEqual(((RectTransform)TmpInputField.transform).rect, SelectedRect);
+                Assert.AreEqual(((RectTransform) TmpInputField.transform).rect, SelectedRect);
                 Assert.AreEqual(Canvas, ParentCanvas);
                 Assert.AreEqual(false, SupportsSubmit);
                 Assert.AreEqual(null, SubmitIcon);
@@ -208,14 +204,20 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
                 yield return null;
             }
 
+            [UnityTest]
             public override IEnumerator Try_Submit_To_Null()
             {
+                EventSystem.current.SetSelectedGameObject(null);
                 yield return null;
+                Assert.DoesNotThrow(() => Target.Submit());
             }
 
+            [UnityTest]
             public override IEnumerator Try_Submit_To_Not_Suitable_Field()
             {
+                EventSystem.current.SetSelectedGameObject(UnityInputField.gameObject);
                 yield return null;
+                Assert.DoesNotThrow(() => Target.Submit());
             }
 
             [UnityTest]
@@ -230,29 +232,48 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
                 Assert.AreEqual("Test!", TmpInputField.text);
             }
 
+            [UnityTest]
             public override IEnumerator Try_Type_To_Null()
             {
+                EventSystem.current.SetSelectedGameObject(null);
                 yield return null;
+                Assert.DoesNotThrow(()=>Target.Type("Test"));
             }
 
+            [UnityTest]
             public override IEnumerator Try_Type_To_Not_Suitable_Field()
             {
+                EventSystem.current.SetSelectedGameObject(UnityInputField.gameObject);
                 yield return null;
+                Assert.DoesNotThrow(() => Target.Type("Test"));
             }
 
-            public override IEnumerator Delete_Submit_To_Suitable_Field()
+            [UnityTest]
+            public override IEnumerator Send_Delete_To_Suitable_Field()
             {
+                EventSystem.current.SetSelectedGameObject(TmpInputField.gameObject);
                 yield return null;
+                Target.Type("Test!");
+                Assert.AreEqual("Test!", TmpInputField.text);
+
+                Target.DeleteLast();
+                Assert.AreEqual("Test", TmpInputField.text);
             }
 
-            public override IEnumerator Delete_Submit_To_Null()
+            [UnityTest]
+            public override IEnumerator Send_Delete_Submit_To_Null()
             {
+                EventSystem.current.SetSelectedGameObject(null);
                 yield return null;
+                Assert.DoesNotThrow(() => Target.DeleteLast());
             }
 
-            public override IEnumerator Delete_Submit_To_Not_Suitable_Field()
+            [UnityTest]
+            public override IEnumerator Send_Delete_To_Not_Suitable_Field()
             {
+                EventSystem.current.SetSelectedGameObject(UnityInputField.gameObject);
                 yield return null;
+                Assert.DoesNotThrow(() => Target.DeleteLast());
             }
         }
     }
