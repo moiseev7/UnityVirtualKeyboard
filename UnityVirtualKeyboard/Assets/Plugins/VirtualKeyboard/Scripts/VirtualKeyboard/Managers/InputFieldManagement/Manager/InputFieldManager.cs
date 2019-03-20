@@ -97,12 +97,18 @@ namespace VirtualKeyboard.Managers.InputFieldManagement.Manager
 
                     _isFieldSelectedAsObservable.OnNext(_currentConfig != null);
                     _selectedRectAsObservable.OnNext(_currentSelectable?.GetComponent<RectTransform>()?.rect);
+                    _supportsSubmitAsObservable.OnNext(_currentConfig?.CheckIfSupportsSubmit(selectable) ?? false);
+                    var componentInParent = _currentSelectable?.GetComponentInParent<Canvas>();
+                    _parentCanvasAsObservable.OnNext(componentInParent);
                 });
         }
         
         public void Type(string symbolToType)
         {
-            
+            if (_currentConfig != null && _currentSelectable != null)
+            {
+                _currentConfig.TypingAction(_currentSelectable, symbolToType);
+            }
         }
 
         public void DeleteLast()
