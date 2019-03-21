@@ -36,7 +36,8 @@ namespace VirtualKeyboard.Managers.KeyboardSpawnManagement
         {
             foreach (var keyboardObject in _spawnedObjects.AsReadOnly())
             {
-                _pool.Despawn(keyboardObject);
+                if( keyboardObject!= null)
+                    _pool.Despawn(keyboardObject);
             }
 
             _spawnedObjects.Clear();
