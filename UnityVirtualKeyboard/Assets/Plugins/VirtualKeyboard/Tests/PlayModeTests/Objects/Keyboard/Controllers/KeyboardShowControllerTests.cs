@@ -16,7 +16,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Controllers
     public class KeyboardShowControllerTests : ZenjectIntegrationTestFixture
     {
         private KeyboardShowController _target;
-        GameObject _controlledGameObject;
+        private GameObject _controlledGameObject;
         private IInputFieldSelectionManager _selectionManager;
         private Subject<bool> _isFieldSelectedObservable;
 
