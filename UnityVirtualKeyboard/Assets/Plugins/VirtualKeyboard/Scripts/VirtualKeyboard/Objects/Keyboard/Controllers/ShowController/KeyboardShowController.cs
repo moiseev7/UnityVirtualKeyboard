@@ -4,7 +4,7 @@ using UnityEngine;
 using VirtualKeyboard.Managers.InputFieldManagement.Manager;
 using Zenject;
 
-namespace VirtualKeyboard.Objects.Keyboard.Controllers
+namespace VirtualKeyboard.Objects.Keyboard.Controllers.ShowController
 {
     /// <summary>
     /// Responsible for showing and hiding the keyboard
@@ -29,6 +29,7 @@ namespace VirtualKeyboard.Objects.Keyboard.Controllers
 
         public void Initialize()
         {
+            _controlledGameObject.SetActive(false);
             _disposable.Add(_selectionManager.IsFieldSelectedAsObservable.Subscribe(_controlledGameObject.SetActive));
         }
 
