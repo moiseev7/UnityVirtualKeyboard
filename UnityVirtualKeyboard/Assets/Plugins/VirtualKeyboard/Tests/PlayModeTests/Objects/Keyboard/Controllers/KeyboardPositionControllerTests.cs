@@ -18,7 +18,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Controllers
         private KeyboardPositionController _target;
         private RectTransform _controlledTransform;
         private IInputFieldSelectionManager _selectionManager;
-        private Subject<Rect?> _selectedRectAsObservable;
+        private Subject<RectTransform> _selectedRectTransformAsObservable;
         private IKeyboardPositionControllerConfig _positionControllerConfig;
 
         [SetUp]
@@ -27,8 +27,8 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Controllers
             _controlledTransform = new GameObject().AddComponent<RectTransform>();
 
             _selectionManager = Substitute.For<IInputFieldSelectionManager>();
-            _selectedRectAsObservable = new Subject<Rect?>();
-            _selectionManager.SelectedRectAsObservable.Returns(_selectedRectAsObservable);
+            _selectedRectTransformAsObservable = new Subject<RectTransform>();
+            _selectionManager.SelectedRectTransformAsObservable.Returns(_selectedRectTransformAsObservable);
 
             _positionControllerConfig = Substitute.For<IKeyboardPositionControllerConfig>();
 
@@ -54,14 +54,17 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Controllers
         {
             _controlledTransform.position = Vector3.one * 50; 
 
-            _positionControllerConfig.PositionOffset.Returns(Vector2.zero);
-            _selectedRectAsObservable.OnNext(new Rect(0,0,2,2));
+            _positionControllerConfig.PositionOffset.Returns(Vector3.zero);
+            _controlledTransform.position = Vector3.zero;
+            _controlledTransform.sizeDelta = Vector2.one * 2;
+            _selectedRectTransformAsObservable.OnNext(_controlledTransform);
             yield return null;
-            Assert.That(Vector3.Distance(new Vector3(1,1,0),_controlledTransform.position) < 0.01f);
+            Assert.That(Vector3.Distance(new Vector3(-1,-1,0),_controlledTransform.position) < 0.01f);
 
-            _selectedRectAsObservable.OnNext(new Rect(1, -1, 2, 2));
+            _controlledTransform.position = new Vector3(-1,1,1);
+            _selectedRectTransformAsObservable.OnNext(_controlledTransform);
             yield return null;
-            Assert.That(Vector3.Distance(new Vector3(2, 0, 0), _controlledTransform.position) < 0.01f);
+            Assert.That(Vector3.Distance(new Vector3(-2, 0, 1), _controlledTransform.position) < 0.01f);
         }
 
         [UnityTest]
@@ -69,14 +72,20 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Controllers
         {
             _controlledTransform.position = Vector3.one * 50;
 
-            _positionControllerConfig.PositionOffset.Returns(new Vector2(1, -1));
-            _selectedRectAsObservable.OnNext(new Rect(0, 0, 2, 2));
+            _positionControllerConfig.PositionOffset.Returns(new Vector3(1, -1, 0));
+            _controlledTransform.position = Vector3.zero;
+            _controlledTransform.sizeDelta = Vector2.one * 2;
+            _selectedRectTransformAsObservable.OnNext(_controlledTransform);
             yield return null;
-            Assert.That(Vector3.Distance(new Vector3(2, 0, 0), _controlledTransform.position) < 0.01f);
+            Debug.Log($"Position: {_controlledTransform.position}");
+            Assert.That(Vector3.Distance(new Vector3(0, -2, 0), _controlledTransform.position) < 0.01f);
 
-            _selectedRectAsObservable.OnNext(new Rect(1, -1, 2, 2));
+            _positionControllerConfig.PositionOffset.Returns(new Vector3(1, -1, -4));
+            _controlledTransform.position = new Vector3(-1, 1, 1);
+            _selectedRectTransformAsObservable.OnNext(_controlledTransform);
             yield return null;
-            Assert.That(Vector3.Distance(new Vector3(3, -1, 0), _controlledTransform.position) < 0.01f);
+            Debug.Log($"Position: {_controlledTransform.position}");
+            Assert.That(Vector3.Distance(new Vector3(-1, -1, -3), _controlledTransform.position) < 0.01f);
         }
 
         [UnityTest]
@@ -85,9 +94,10 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Controllers
             _controlledTransform.position = Vector3.one * 50;
             _target.Dispose();
 
-            _selectedRectAsObservable.OnNext(new Rect(0, 0, 2, 2));
+            _selectedRectTransformAsObservable.OnNext(_controlledTransform);
             yield return null;
-            Assert.That(Vector3.Distance(new Vector3(50, 50, 0), _controlledTransform.position) < 0.01f);
+            Debug.Log($"Position: {_controlledTransform.position}");
+            Assert.That(Vector3.Distance(new Vector3(50, 50, 50), _controlledTransform.position) < 0.01f);
         }
     }
 }

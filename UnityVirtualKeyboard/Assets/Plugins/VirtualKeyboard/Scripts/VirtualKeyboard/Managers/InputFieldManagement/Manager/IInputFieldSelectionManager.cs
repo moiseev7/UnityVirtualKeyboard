@@ -18,7 +18,7 @@ namespace VirtualKeyboard.Managers.InputFieldManagement.Manager
         /// <summary>
         /// Observable of the selected input field rect
         /// </summary>
-        IObservable<Rect?> SelectedRectAsObservable { get; }
+        IObservable<RectTransform> SelectedRectTransformAsObservable { get; }
 
         /// <summary>
         /// Observable of the parent canvas of the selected input field

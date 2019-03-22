@@ -29,7 +29,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
 
 
         protected bool? SelectionFlag;
-        protected Rect? SelectedRect;
+        protected RectTransform SelectedRectTransform;
         protected Canvas ParentCanvas;
         protected bool? SupportsSubmit;
         protected Texture2D SubmitIcon;
@@ -77,7 +77,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
             Target = Container.Resolve<InputFieldManager>();
 
             SelectionFlag = null;
-            SelectedRect = null;
+            SelectedRectTransform = null;
             ParentCanvas = null;
             SupportsSubmit = null;
             SubmitIcon = null;
@@ -85,7 +85,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
             _compositeDisposable = new CompositeDisposable();
 
             _compositeDisposable.Add(Target.IsFieldSelectedAsObservable.Subscribe(flag => SelectionFlag = flag));
-            _compositeDisposable.Add(Target.SelectedRectAsObservable.Subscribe(rect => SelectedRect = rect));
+            _compositeDisposable.Add(Target.SelectedRectTransformAsObservable.Subscribe(rectTransform => SelectedRectTransform = rectTransform));
             _compositeDisposable.Add(Target.ParentCanvasAsObservable.Subscribe(canvas => ParentCanvas = canvas));
             _compositeDisposable.Add(
                 Target.SupportsSubmitAsObservable.Subscribe(supports => SupportsSubmit = supports));
@@ -141,7 +141,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
                 EventSystem.current.SetSelectedGameObject(UnityInputField.gameObject);
                 yield return null;
                 Assert.AreEqual(false, SelectionFlag);
-                Assert.AreEqual(null, SelectedRect);
+                Assert.AreEqual(null, SelectedRectTransform);
                 Assert.AreEqual(null, ParentCanvas);
                 Assert.AreEqual(false, SupportsSubmit);
                 Assert.AreEqual(null, SubmitIcon);
@@ -153,7 +153,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
                 EventSystem.current.SetSelectedGameObject(TmpInputField.gameObject);
                 yield return null;
                 Assert.AreEqual(true, SelectionFlag);
-                Assert.AreEqual(((RectTransform) TmpInputField.transform).rect, SelectedRect);
+                Assert.AreEqual(((RectTransform) TmpInputField.transform), SelectedRectTransform);
                 Assert.AreEqual(Canvas, ParentCanvas);
                 Assert.AreEqual(false, SupportsSubmit);
                 Assert.AreEqual(null, SubmitIcon);
@@ -165,7 +165,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
                 EventSystem.current.SetSelectedGameObject(TmpInputField.gameObject);
                 yield return null;
                 Assert.AreEqual(true, SelectionFlag);
-                Assert.AreEqual(((RectTransform) TmpInputField.transform).rect, SelectedRect);
+                Assert.AreEqual(((RectTransform) TmpInputField.transform), SelectedRectTransform);
                 Assert.AreEqual(Canvas, ParentCanvas);
                 Assert.AreEqual(false, SupportsSubmit);
                 Assert.AreEqual(null, SubmitIcon);
@@ -173,7 +173,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
                 EventSystem.current.SetSelectedGameObject(UnityInputField.gameObject);
                 yield return null;
                 Assert.AreEqual(false, SelectionFlag);
-                Assert.AreEqual(null, SelectedRect);
+                Assert.AreEqual(null, SelectedRectTransform);
                 Assert.AreEqual(null, ParentCanvas);
                 Assert.AreEqual(false, SupportsSubmit);
                 Assert.AreEqual(null, SubmitIcon);
@@ -185,7 +185,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
                 EventSystem.current.SetSelectedGameObject(UnityInputField.gameObject);
                 yield return null;
                 Assert.AreEqual(false, SelectionFlag);
-                Assert.AreEqual(null, SelectedRect);
+                Assert.AreEqual(null, SelectedRectTransform);
                 Assert.AreEqual(null, ParentCanvas);
                 Assert.AreEqual(false, SupportsSubmit);
                 Assert.AreEqual(null, SubmitIcon);
@@ -193,7 +193,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Managers.InputFieldManagement.Mana
                 EventSystem.current.SetSelectedGameObject(TmpInputField.gameObject);
                 yield return null;
                 Assert.AreEqual(true, SelectionFlag);
-                Assert.AreEqual(((RectTransform) TmpInputField.transform).rect, SelectedRect);
+                Assert.AreEqual(((RectTransform) TmpInputField.transform), SelectedRectTransform);
                 Assert.AreEqual(Canvas, ParentCanvas);
                 Assert.AreEqual(false, SupportsSubmit);
                 Assert.AreEqual(null, SubmitIcon);

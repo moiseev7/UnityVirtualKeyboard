@@ -10,6 +10,6 @@ namespace VirtualKeyboard.Objects.Keyboard.Controllers.PositionController
         /// <summary>
         /// Offset of the keyboard position relative to the position initially intended by the position controller.
         /// </summary>
-        Vector2 PositionOffset { get; }
+        Vector3 PositionOffset { get; }
     }
 }

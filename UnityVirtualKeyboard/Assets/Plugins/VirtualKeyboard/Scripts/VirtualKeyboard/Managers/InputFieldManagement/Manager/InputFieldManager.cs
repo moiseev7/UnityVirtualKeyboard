@@ -30,7 +30,7 @@ namespace VirtualKeyboard.Managers.InputFieldManagement.Manager
         /// <summary>
         /// Observable of the selected input field rect
         /// </summary>
-        private Subject<Rect?> _selectedRectAsObservable = new Subject<Rect?>();
+        private Subject<RectTransform> _selectedRectTransformAsObservable = new Subject<RectTransform>();
 
         /// <summary>
         /// Observable of the parent canvas of the selected input field
@@ -57,7 +57,7 @@ namespace VirtualKeyboard.Managers.InputFieldManagement.Manager
         /// <summary>
         /// Observable of the selected input field rect
         /// </summary>
-        public IObservable<Rect?> SelectedRectAsObservable => _selectedRectAsObservable;
+        public IObservable<RectTransform> SelectedRectTransformAsObservable => _selectedRectTransformAsObservable;
 
         /// <summary>
         /// Observable of the parent canvas of the selected input field
@@ -96,7 +96,7 @@ namespace VirtualKeyboard.Managers.InputFieldManagement.Manager
 
 
                     _isFieldSelectedAsObservable.OnNext(_currentConfig != null);
-                    _selectedRectAsObservable.OnNext(_currentSelectable?.GetComponent<RectTransform>()?.rect);
+                    _selectedRectTransformAsObservable.OnNext(_currentSelectable?.GetComponent<RectTransform>());
                     _supportsSubmitAsObservable.OnNext(_currentConfig?.CheckIfSupportsSubmit(selectable) ?? false);
                     var componentInParent = _currentSelectable?.GetComponentInParent<Canvas>();
                     _parentCanvasAsObservable.OnNext(componentInParent);

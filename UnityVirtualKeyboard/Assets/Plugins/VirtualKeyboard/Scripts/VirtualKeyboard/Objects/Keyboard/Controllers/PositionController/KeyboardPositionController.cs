@@ -3,6 +3,7 @@ using UniRx;
 using UnityEngine;
 using VirtualKeyboard.Managers.InputFieldManagement.Manager;
 using Zenject;
+using Debug = UnityEngine.Debug;
 
 namespace VirtualKeyboard.Objects.Keyboard.Controllers.PositionController
 {
@@ -34,10 +35,16 @@ namespace VirtualKeyboard.Objects.Keyboard.Controllers.PositionController
 
         public void Initialize()
         {
-            _disposable.Add(_fieldSelectionManager.SelectedRectAsObservable.Where(rect => rect != null).Subscribe(rect =>
+            _disposable.Add(_fieldSelectionManager.SelectedRectTransformAsObservable.Where(rectTransform => rectTransform != null).Subscribe(rectTransform =>
             {
-                //_controlledRectTransform.position = rect.
-                //TODO: Replace Rect? with RectTransform in IInputFieldSelectionManager
+                
+
+                Debug.Log($"Rect transform position: {rectTransform.position}");
+                _controlledRectTransform.position = rectTransform.position 
+                                                    + rectTransform.right * (_positionControllerConfig.PositionOffset.x - rectTransform.sizeDelta.x / 2)
+                                                    + rectTransform.up * (_positionControllerConfig.PositionOffset.y - rectTransform.sizeDelta.y / 2)
+                                                    + rectTransform.forward * _positionControllerConfig.PositionOffset.z;
+                Debug.Log($"Controlled rect transform: {_controlledRectTransform.position}");
             }));
         }
 
