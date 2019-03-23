@@ -62,6 +62,8 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Controllers
             _controlledGameObject.SetActive(false);
             _isFieldSelectedObservable.OnNext(true);
             yield return null;
+            yield return null;
+            yield return null;
             Assert.AreEqual(true, _controlledGameObject.activeInHierarchy);
         }
 
@@ -70,6 +72,8 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Controllers
         {
             _controlledGameObject.SetActive(true);
             _isFieldSelectedObservable.OnNext(false);
+            yield return null;
+            yield return null;
             yield return null;
             Assert.AreEqual(false, _controlledGameObject.activeInHierarchy);
         }

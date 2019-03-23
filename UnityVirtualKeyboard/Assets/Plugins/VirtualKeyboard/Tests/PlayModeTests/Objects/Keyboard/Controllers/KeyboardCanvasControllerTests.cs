@@ -97,7 +97,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Controllers
             yield return null;
             Assert.That(Vector3.Distance(controlledRectTransform.position, selectedRectTransform.position) < 0.01f);
             Assert.That(Vector2.Distance(controlledRectTransform.sizeDelta, selectedRectTransform.sizeDelta) < 0.01f);
-            Assert.That(Vector3.Distance(controlledRectTransform.localScale, Vector3.one * 3) < 0.01f);
+            
         }
 
         [UnityTest]

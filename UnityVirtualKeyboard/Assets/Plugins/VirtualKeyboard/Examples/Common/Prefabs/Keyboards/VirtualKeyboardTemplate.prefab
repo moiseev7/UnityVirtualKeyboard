@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _controlledRectTransform: {fileID: 4811093482552627527}
-  _positionControllerConfig: {fileID: 11400000, guid: e7ed18ce53cbbce41904a84a231cca74,
+  _positionControllerConfig: {fileID: 11400000, guid: 4c9c49290b7c1ac42bb2ea78d4161b51,
     type: 2}
 --- !u!1 &2216713411053342046
 GameObject:
@@ -5926,7 +5926,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1000
   m_TargetDisplay: 0
 --- !u!114 &7143580835133581075
 MonoBehaviour:

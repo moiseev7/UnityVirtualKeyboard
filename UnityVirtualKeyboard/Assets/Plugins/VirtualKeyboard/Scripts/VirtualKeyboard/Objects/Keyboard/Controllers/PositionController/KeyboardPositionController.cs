@@ -58,7 +58,7 @@ namespace VirtualKeyboard.Objects.Keyboard.Controllers.PositionController
 
         public void Dispose()
         {
-            _disposable.Dispose();
+            //_disposable.Dispose();
         }
     }
 }

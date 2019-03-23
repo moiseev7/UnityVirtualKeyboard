@@ -8,7 +8,7 @@ namespace VirtualKeyboard.Managers.KeyboardSpawnManagement
     /// <summary>
     /// Spawns an instance of the virtual keyboard
     /// </summary>
-    public class KeyboardSpawnManager : IInitializable, IDisposable
+    public class KeyboardSpawnManager : IInitializable
     {
         /// <summary>
         /// Injection of the keyboard pool
@@ -25,32 +25,11 @@ namespace VirtualKeyboard.Managers.KeyboardSpawnManagement
         /// </summary>
         private List<VirtualKeyboardObject> _spawnedObjects = new List<VirtualKeyboardObject>();
 
-        private bool _isShuttingDown;
-
         public void Initialize()
         {
             var virtualKeyboardObject = _pool.Spawn();
             virtualKeyboardObject.name = _keyboardSpawnManagerConfig.KeyboardObjectName;
             _spawnedObjects.Add(virtualKeyboardObject);
-        }
-
-        void OnApplicationQuit()
-        {
-            _isShuttingDown = true;
-        }
-
-        public void Dispose()
-        {
-            if(_isShuttingDown)
-                return;
-
-            foreach (var keyboardObject in _spawnedObjects.AsReadOnly())
-            {
-                if( keyboardObject!= null)
-                    _pool.Despawn(keyboardObject);
-            }
-
-            _spawnedObjects.Clear();
         }
     }
 }
