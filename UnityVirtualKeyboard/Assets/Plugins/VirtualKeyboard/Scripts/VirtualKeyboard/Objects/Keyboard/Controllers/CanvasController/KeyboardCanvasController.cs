@@ -26,7 +26,6 @@ namespace VirtualKeyboard.Objects.Keyboard.Controllers.CanvasController
 
         private CompositeDisposable _disposable;
 
-        private bool _isShuttingDown;
 
         public void Initialize()
         {
@@ -41,20 +40,11 @@ namespace VirtualKeyboard.Objects.Keyboard.Controllers.CanvasController
                 _controlledCanvas.GetComponent<RectTransform>()?.GetCopyOf(canvas.GetComponent<RectTransform>());
                 _controlledCanvas.transform.localScale = canvas.transform.lossyScale;
                 _controlledCanvas.transform.rotation = canvas.transform.rotation;
-                Canvas.ForceUpdateCanvases();
             }));
-        }
-
-        void OnApplicationQuit()
-        {
-            _isShuttingDown = true;
         }
 
         public void Dispose()
         {
-            if (_isShuttingDown)
-                return;
-
             _disposable.Dispose();
         }
     }
