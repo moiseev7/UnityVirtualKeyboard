@@ -37,14 +37,12 @@ namespace VirtualKeyboard.Objects.Keyboard.Controllers.PositionController
         {
             _disposable.Add(_fieldSelectionManager.SelectedRectTransformAsObservable.Where(rectTransform => rectTransform != null).Subscribe(rectTransform =>
             {
-                
-
-                Debug.Log($"Rect transform position: {rectTransform.position}");
-                _controlledRectTransform.position = rectTransform.position 
-                                                    + rectTransform.right * (_positionControllerConfig.PositionOffset.x - rectTransform.sizeDelta.x / 2)
-                                                    + rectTransform.up * (_positionControllerConfig.PositionOffset.y - rectTransform.sizeDelta.y / 2)
-                                                    + rectTransform.forward * _positionControllerConfig.PositionOffset.z;
-                Debug.Log($"Controlled rect transform: {_controlledRectTransform.position}");
+                Vector3[] corners = new Vector3[4];
+                rectTransform.GetWorldCorners(corners);
+                _controlledRectTransform.position = corners[0] 
+                                                    + rectTransform.right * _positionControllerConfig.PositionOffset.x
+                                                    + rectTransform.up * _positionControllerConfig.PositionOffset.y
+                                                   + rectTransform.forward * _positionControllerConfig.PositionOffset.z;
             }));
         }
 
