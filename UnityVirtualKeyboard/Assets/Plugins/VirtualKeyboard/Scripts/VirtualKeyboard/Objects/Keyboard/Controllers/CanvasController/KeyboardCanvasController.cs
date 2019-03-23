@@ -11,7 +11,7 @@ namespace VirtualKeyboard.Objects.Keyboard.Controllers.CanvasController
     /// <summary>
     /// Controller for the keyboard canvas
     /// </summary>
-    public class KeyboardCanvasController : IInitializable, IDisposable, IKeyboardCanvasController
+    public class KeyboardCanvasController : IInitializable, IDisposable
     {
         /// <summary>
         /// Injection of the controlled canvas
@@ -26,6 +26,8 @@ namespace VirtualKeyboard.Objects.Keyboard.Controllers.CanvasController
 
         private CompositeDisposable _disposable;
 
+        private bool _isShuttingDown;
+
         public void Initialize()
         {
             _disposable = new CompositeDisposable();
@@ -37,19 +39,21 @@ namespace VirtualKeyboard.Objects.Keyboard.Controllers.CanvasController
                 _controlledCanvas.GetComponent<CanvasScaler>()?.GetCopyOf(canvas.GetComponent<CanvasScaler>());
                 _controlledCanvas.GetCopyOf(canvas);
                 _controlledCanvas.GetComponent<RectTransform>()?.GetCopyOf(canvas.GetComponent<RectTransform>());
+                Canvas.ForceUpdateCanvases();
             }));
+        }
+
+        void OnApplicationQuit()
+        {
+            _isShuttingDown = true;
         }
 
         public void Dispose()
         {
+            if (_isShuttingDown)
+                return;
+
             _disposable.Dispose();
         }
-    }
-
-    /// <summary>
-    /// Interface for KeyboardCanvasController
-    /// </summary>
-    public interface IKeyboardCanvasController
-    {
     }
 }

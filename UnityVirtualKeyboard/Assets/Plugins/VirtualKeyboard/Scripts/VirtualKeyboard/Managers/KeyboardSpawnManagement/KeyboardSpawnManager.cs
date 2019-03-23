@@ -25,6 +25,8 @@ namespace VirtualKeyboard.Managers.KeyboardSpawnManagement
         /// </summary>
         private List<VirtualKeyboardObject> _spawnedObjects = new List<VirtualKeyboardObject>();
 
+        private bool _isShuttingDown;
+
         public void Initialize()
         {
             var virtualKeyboardObject = _pool.Spawn();
@@ -32,8 +34,16 @@ namespace VirtualKeyboard.Managers.KeyboardSpawnManagement
             _spawnedObjects.Add(virtualKeyboardObject);
         }
 
+        void OnApplicationQuit()
+        {
+            _isShuttingDown = true;
+        }
+
         public void Dispose()
         {
+            if(_isShuttingDown)
+                return;
+
             foreach (var keyboardObject in _spawnedObjects.AsReadOnly())
             {
                 if( keyboardObject!= null)

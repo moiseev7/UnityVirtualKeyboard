@@ -30,7 +30,8 @@ namespace VirtualKeyboard.Objects.Keyboard.Controllers.ShowController
         public void Initialize()
         {
             _controlledGameObject.SetActive(false);
-            _disposable.Add(_selectionManager.IsFieldSelectedAsObservable.Subscribe(_controlledGameObject.SetActive));
+            _disposable.Add(_selectionManager.IsFieldSelectedAsObservable.DelayFrame(2)
+                .Subscribe(_controlledGameObject.SetActive));
         }
 
         public void Dispose()
