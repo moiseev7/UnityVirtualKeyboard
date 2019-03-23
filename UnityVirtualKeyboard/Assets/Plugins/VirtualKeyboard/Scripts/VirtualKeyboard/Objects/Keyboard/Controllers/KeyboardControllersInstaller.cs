@@ -1,6 +1,7 @@
 ﻿using Helpers.Interfaces;
 using JetBrains.Annotations;
 using UnityEngine;
+using VirtualKeyboard.Objects.Keyboard.Controllers.CanvasController;
 using VirtualKeyboard.Objects.Keyboard.Controllers.PositionController;
 using VirtualKeyboard.Objects.Keyboard.Controllers.ShowController;
 using Zenject;
@@ -27,11 +28,19 @@ namespace VirtualKeyboard.Objects.Keyboard.Controllers
         [Tooltip("Reference to the keyboard position controller installer.\nOptional - leave it empty if you do not want to use KeyboardPositionController")]
         [SerializeField]
         [CanBeNull] private KeyboardPositionControllerInstaller _keyboardPositionControllerInstaller;
+        /// <summary>
+        /// Reference to the keyboard canvas controller installer.
+        /// Optional - leave it empty if you do not want to use KeyboardController
+        /// </summary>
+        [Tooltip("Reference to the keyboard canvas controller installer.\nOptional - leave it empty if you do not want to use KeyboardController")]
+        [SerializeField]
+        [CanBeNull] private KeyboardCanvasControllerInstaller _keyboardCanvasControllerInstaller;
 
         public void InstallBindings(DiContainer Container)
         {
             _keyboardShowControllerInstaller?.InstallBindings(Container);
             _keyboardPositionControllerInstaller?.InstallBindings(Container);
+            _keyboardCanvasControllerInstaller?.InstallBindings(Container);
         }
     }
 }

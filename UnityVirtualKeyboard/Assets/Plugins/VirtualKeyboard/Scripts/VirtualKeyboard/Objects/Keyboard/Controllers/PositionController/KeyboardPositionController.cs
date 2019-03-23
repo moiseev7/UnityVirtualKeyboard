@@ -37,6 +37,7 @@ namespace VirtualKeyboard.Objects.Keyboard.Controllers.PositionController
         {
             _disposable.Add(_fieldSelectionManager.SelectedRectTransformAsObservable.Where(rectTransform => rectTransform != null).Subscribe(rectTransform =>
             {
+                Debug.Log("Updated position");
                 Vector3[] corners = new Vector3[4];
                 rectTransform.GetWorldCorners(corners);
                 _controlledRectTransform.position = corners[0] 

@@ -94,12 +94,12 @@ namespace VirtualKeyboard.Managers.InputFieldManagement.Manager
                     _currentConfig = _configContainer.GetConfig(selectable);
                     _currentSelectable = _currentConfig != null ? selectable : null;
 
+                    var componentInParent = _currentSelectable?.GetComponentInParent<Canvas>();
+                    _parentCanvasAsObservable.OnNext(componentInParent);
 
                     _isFieldSelectedAsObservable.OnNext(_currentConfig != null);
                     _selectedRectTransformAsObservable.OnNext(_currentSelectable?.GetComponent<RectTransform>());
                     _supportsSubmitAsObservable.OnNext(_currentConfig?.CheckIfSupportsSubmit(selectable) ?? false);
-                    var componentInParent = _currentSelectable?.GetComponentInParent<Canvas>();
-                    _parentCanvasAsObservable.OnNext(componentInParent);
                 });
         }
         
