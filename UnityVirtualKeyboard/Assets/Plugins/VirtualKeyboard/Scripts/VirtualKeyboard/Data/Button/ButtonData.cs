@@ -16,16 +16,16 @@ namespace VirtualKeyboard.Data.Button
         ///     List of the button characters. Each member of the list represents characters that will be typed when the button is
         ///     pressed in a certain mode (e.g. SHIFT or non-SHIFT mode)
         /// </summary>
-        [SerializeField] private List<string> _buttonModeCharacters;
+        [SerializeField] private List<string> _buttonPageCharacters;
 
         /// <summary>
         ///     Horizontal size of the button in size units. The default size of the button is 1
         /// </summary>
         [SerializeField] private int _buttonHorizontalSize;
 
-        public ButtonData(List<string> buttonModeCharacters, int buttonHorizontalSize)
+        public ButtonData(List<string> buttonPageCharacters, int buttonHorizontalSize)
         {
-            _buttonModeCharacters = buttonModeCharacters;
+            _buttonPageCharacters = buttonPageCharacters;
             _buttonHorizontalSize = buttonHorizontalSize;
         }
 
@@ -34,7 +34,7 @@ namespace VirtualKeyboard.Data.Button
         ///     button is
         ///     pressed in a certain mode (e.g. SHIFT or non-SHIFT mode)
         /// </summary>
-        public IEnumerable<string> ButtonModeCharacters => _buttonModeCharacters;
+        public IEnumerable<string> ButtonModeCharacters => _buttonPageCharacters;
 
         /// <summary>
         ///     Horizontal size of the button in size units. The default size of the button is 1
@@ -44,18 +44,18 @@ namespace VirtualKeyboard.Data.Button
         #region Decoration
 
         /// <summary>
-        ///     Sets amount of the modes that the button should support
+        ///     Sets amount of the pages that the button should support
         /// </summary>
-        /// <param name="modesAmount">New amount of supported modes</param>
-        public void SetModesAmount(int modesAmount)
+        /// <param name="pagesAmount">New amount of supported modes</param>
+        public void SetPageAmount(int pagesAmount)
         {
-            var delta = modesAmount - _buttonModeCharacters.Count;
+            var delta = pagesAmount - _buttonPageCharacters.Count;
 
             if (delta < 0) // Reduce amount of the buttons modes
-                _buttonModeCharacters = _buttonModeCharacters.Take(modesAmount).ToList();
+                _buttonPageCharacters = _buttonPageCharacters.Take(pagesAmount).ToList();
             else if (delta > 0) // Increase amount of the buttons modes
                 for (var i = 0; i < delta; i++)
-                    _buttonModeCharacters.Add("");
+                    _buttonPageCharacters.Add("");
         }
 
         /// <summary>

@@ -12,45 +12,45 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b140b646a2fbb8488d1bf97b65ecbfe, type: 3}
   m_Name: English - Row 0
   m_EditorClassIdentifier: 
-  _amountOfModes: 2
+  _amountOfPages: 2
   _buttons:
-  - _buttonModeCharacters:
+  - _buttonPageCharacters:
     - 1
     - 1
     _buttonHorizontalSize: 1
-  - _buttonModeCharacters:
+  - _buttonPageCharacters:
     - 2
     - 2
     _buttonHorizontalSize: 1
-  - _buttonModeCharacters:
+  - _buttonPageCharacters:
     - 3
     - 3
     _buttonHorizontalSize: 1
-  - _buttonModeCharacters:
+  - _buttonPageCharacters:
     - 4
     - 4
     _buttonHorizontalSize: 1
-  - _buttonModeCharacters:
+  - _buttonPageCharacters:
     - 5
     - 5
     _buttonHorizontalSize: 1
-  - _buttonModeCharacters:
+  - _buttonPageCharacters:
     - 6
     - 6
     _buttonHorizontalSize: 1
-  - _buttonModeCharacters:
+  - _buttonPageCharacters:
     - 7
     - 7
     _buttonHorizontalSize: 1
-  - _buttonModeCharacters:
+  - _buttonPageCharacters:
     - 8
     - 8
     _buttonHorizontalSize: 1
-  - _buttonModeCharacters:
+  - _buttonPageCharacters:
     - 9
     - 9
     _buttonHorizontalSize: 1
-  - _buttonModeCharacters:
+  - _buttonPageCharacters:
     - 0
     - 0
     _buttonHorizontalSize: 1

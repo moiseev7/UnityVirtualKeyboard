@@ -11,7 +11,7 @@ namespace VirtualKeyboard.Blueprints.KeyboardRow
         /// <summary>
         ///     Amount of modes supported by the row
         /// </summary>
-        int AmountOfModes { get; }
+        int AmountOfPages { get; }
 
         /// <summary>
         ///     Buttons of the row

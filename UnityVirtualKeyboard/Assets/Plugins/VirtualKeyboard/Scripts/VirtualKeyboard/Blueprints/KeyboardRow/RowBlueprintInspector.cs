@@ -67,11 +67,11 @@ namespace VirtualKeyboard.Blueprints.KeyboardRow
 
                 //Draw Modes label
                 EditorGUI.LabelField(new Rect(rect.x, rect.y + yPosition * _lineHeightSpace, rect.width, _lineHeight),
-                    "Mode characters:");
+                    "Page characters:");
                 yPosition++;
 
                 // Draw modes PropertyFields
-                var characters = element.FindPropertyRelative("_buttonModeCharacters");
+                var characters = element.FindPropertyRelative("_buttonPageCharacters");
                 var amountOfModes = characters.arraySize;
                 var step = Mathf.Min((rect.width - SpaceSize * (amountOfModes - 1)) / amountOfModes,
                     ModeFieldMaxWidth);
@@ -97,7 +97,7 @@ namespace VirtualKeyboard.Blueprints.KeyboardRow
         {
             serializedObject.Update();
 
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_amountOfModes"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_amountOfPages"));
             
             
             _buttonsList.DoLayoutList();

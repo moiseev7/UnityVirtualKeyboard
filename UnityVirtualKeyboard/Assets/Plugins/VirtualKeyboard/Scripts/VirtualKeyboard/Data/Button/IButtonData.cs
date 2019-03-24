@@ -22,7 +22,7 @@ namespace VirtualKeyboard.Data.Button
         /// <summary>
         ///     Sets amount of the modes that the button should support
         /// </summary>
-        /// <param name="modesAmount">New amount of supported modes</param>
-        void SetModesAmount(int modesAmount);
+        /// <param name="pagesAmount">New amount of supported modes</param>
+        void SetPageAmount(int pagesAmount);
     }
 }

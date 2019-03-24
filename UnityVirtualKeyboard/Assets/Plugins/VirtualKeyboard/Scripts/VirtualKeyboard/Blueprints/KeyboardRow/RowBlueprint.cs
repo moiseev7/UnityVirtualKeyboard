@@ -12,9 +12,9 @@ namespace VirtualKeyboard.Blueprints.KeyboardRow
     public class RowBlueprint : ScriptableObject, IRowBlueprint, IFixable
     {
         /// <summary>
-        ///     Amount of modes supported by the row
+        ///     Amount of pages supported by the row
         /// </summary>
-        [SerializeField] private int _amountOfModes = 1;
+        [SerializeField] private int _amountOfPages = 1;
 
         /// <summary>
         ///     Buttons of the row
@@ -23,14 +23,14 @@ namespace VirtualKeyboard.Blueprints.KeyboardRow
 
         public void Initialize(int amountOfModes, List<ButtonData> buttons)
         {
-            _amountOfModes = amountOfModes;
+            _amountOfPages = amountOfModes;
             _buttons = buttons;
         }
 
         /// <summary>
-        ///     Amount of modes supported by the row
+        ///     Amount of pages supported by the row
         /// </summary>
-        public int AmountOfModes => _amountOfModes;
+        public int AmountOfPages => _amountOfPages;
 
         /// <summary>
         ///     Buttons of the row
@@ -49,7 +49,7 @@ namespace VirtualKeyboard.Blueprints.KeyboardRow
         /// </summary>
         private void UpdateModesSize()
         {
-            foreach (var button in Buttons) button.SetModesAmount(AmountOfModes);
+            foreach (var button in Buttons) button.SetPageAmount(AmountOfPages);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace VirtualKeyboard.Blueprints.KeyboardRow
         /// </summary>
         public void Fix()
         {
-            _amountOfModes = Mathf.Max(1, AmountOfModes);
+            _amountOfPages = Mathf.Max(1, AmountOfPages);
 
             foreach (var button in Buttons) (button as ButtonData)?.Fix();
 

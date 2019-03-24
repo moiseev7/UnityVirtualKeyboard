@@ -45,7 +45,7 @@ namespace VirtualKeyboard.Data.ButtonDataTests
             public void _2_Doesnt_Alter_List_If_The_Size_Is_2()
             {
                 _target = new ButtonData(new List<string> {"first", "second"}, 1);
-                _target.SetModesAmount(2);
+                _target.SetPageAmount(2);
                 Assert.AreEqual(_target.ButtonModeCharacters.Count(), 2);
                 Assert.AreEqual("first", _target.ButtonModeCharacters.First());
                 Assert.AreEqual("second", _target.ButtonModeCharacters.Last());
@@ -55,7 +55,7 @@ namespace VirtualKeyboard.Data.ButtonDataTests
             public void _2_Reduces_Size_Of_List_If_The_Size_Is_3()
             {
                 _target = new ButtonData(new List<string> { "first", "second", "third" }, 1);
-                _target.SetModesAmount(2);
+                _target.SetPageAmount(2);
                 Assert.AreEqual(_target.ButtonModeCharacters.Count(), 2);
                 Assert.AreEqual("first", _target.ButtonModeCharacters.First());
                 Assert.AreEqual("second", _target.ButtonModeCharacters.Last());
@@ -65,7 +65,7 @@ namespace VirtualKeyboard.Data.ButtonDataTests
             public void _2_Increases_Size_Of_List_If_The_Size_Is_1()
             {
                 _target = new ButtonData(new List<string> { "first"}, 1);
-                _target.SetModesAmount(2);
+                _target.SetPageAmount(2);
                 Assert.AreEqual(_target.ButtonModeCharacters.Count(), 2);
                 Assert.AreEqual("first", _target.ButtonModeCharacters.First());
                 Assert.AreEqual("", _target.ButtonModeCharacters.Last());

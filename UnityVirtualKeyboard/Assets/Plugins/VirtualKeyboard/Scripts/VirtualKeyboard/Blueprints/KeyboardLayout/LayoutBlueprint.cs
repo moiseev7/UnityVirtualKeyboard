@@ -10,7 +10,15 @@ namespace VirtualKeyboard.Blueprints.KeyboardLayout
     [CreateAssetMenu(fileName = "Language - Layout", menuName = "Virtual Keyboard/Blueprints/Layout Blueprint")]
     public class LayoutBlueprint : ScriptableObject, ILayoutBlueprint
     {
-        [SerializeField] private int _amountOfModes = 1;
+        /// <summary>
+        /// Name of the layout
+        /// </summary>
+        [SerializeField] private string _name;
+
+        /// <summary>
+        /// Amount of pages in the layout
+        /// </summary>
+        [SerializeField] private int _amountOfPages = 2;
 
         /// <summary>
         /// List of the row blueprints
@@ -22,15 +30,22 @@ namespace VirtualKeyboard.Blueprints.KeyboardLayout
         /// </summary>
         public IEnumerable<IRowBlueprint> RowBlueprints => _rowBlueprints;
 
+        public int AmountOfPages => _amountOfPages;
+
+        /// <summary>
+        /// Name of the layout
+        /// </summary>
+        public string Name => _name;
+
         void OnValidate()
         {
-            _amountOfModes = Mathf.Max(1, _amountOfModes);
+            _amountOfPages = Mathf.Max(1, AmountOfPages);
             for (var index = 0; index < _rowBlueprints.Count; index++)
             {
                 var rowBlueprint = _rowBlueprints[index];
                 if(rowBlueprint == null) continue;
 
-                if (rowBlueprint.AmountOfModes != _amountOfModes)
+                if (rowBlueprint.AmountOfPages != AmountOfPages)
                 {
                     Debug.LogError("A row amount of modes should correspond to the layout amount of modes",
                         rowBlueprint);
@@ -38,13 +53,5 @@ namespace VirtualKeyboard.Blueprints.KeyboardLayout
                 }
             }
         }
-    }
-
-    public interface ILayoutBlueprint
-    {
-        /// <summary>
-        /// List of the row blueprints
-        /// </summary>
-        IEnumerable<IRowBlueprint> RowBlueprints { get; }
     }
 }
