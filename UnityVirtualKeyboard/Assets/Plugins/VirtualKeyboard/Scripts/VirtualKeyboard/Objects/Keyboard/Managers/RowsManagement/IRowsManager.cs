@@ -1,21 +1,19 @@
-﻿using System.Collections;
-
-namespace VirtualKeyboard.Objects.Keyboard.Managers.RowsManagement
+﻿namespace VirtualKeyboard.Objects.Keyboard.Managers.RowsManagement
 {
     /// <summary>
-    /// Manager for the rows
+    /// Interface for RowsManager
     /// </summary>
-    public class RowsManager : IRowsManager
+    public interface IRowsManager
     {
         /// <summary>
         /// Resets the rows
         /// </summary>
-        public void ResetRows() { }
+        void ResetRows();
 
         /// <summary>
         /// Adds a new row
         /// </summary>
         /// <param name="rowParameters">Parameters of the row</param>
-        public void AddRow(IRowParameters rowParameters) { }
+        void AddRow(IRowParameters rowParameters);
     }
 }

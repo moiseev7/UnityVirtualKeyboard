@@ -1,7 +1,7 @@
 ﻿using VirtualKeyboard.Blueprints.KeyboardLayoutCollection;
 using Zenject;
 
-namespace VirtualKeyboard.Objects.Keyboard.Managers.LanguageManagement
+namespace VirtualKeyboard.Managers.LanguageManagement
 {
     /// <summary>
     /// Manager for the keyboard languages

@@ -3,7 +3,7 @@ using UnityEngine;
 using VirtualKeyboard.Blueprints.KeyboardLayout;
 using VirtualKeyboard.Blueprints.KeyboardLayoutCollection;
 using VirtualKeyboard.Data.Button;
-using VirtualKeyboard.Objects.Keyboard.Managers.LanguageManagement;
+using VirtualKeyboard.Managers.LanguageManagement;
 using VirtualKeyboard.Objects.Keyboard.Managers.RowsManagement;
 using Zenject;
 

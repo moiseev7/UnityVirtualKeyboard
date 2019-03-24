@@ -2,6 +2,8 @@
 using UnityEngine;
 using VirtualKeyboard.Managers.InputFieldManagement;
 using VirtualKeyboard.Managers.KeyboardSpawnManagement;
+using VirtualKeyboard.Managers.LanguageManagement;
+using VirtualKeyboard.Managers.LayoutSceneManagement;
 using Zenject;
 
 namespace VirtualKeyboard.Managers
@@ -25,10 +27,24 @@ namespace VirtualKeyboard.Managers
         [Tooltip("Reference to the spawn manager installer")]
         private KeyboardSpawnManagerInstaller _keyboardSpawnManagerInstaller;
 
+        /// <summary>
+        /// Reference to the language manager installer
+        /// </summary>
+        [Tooltip("Reference to the language manager installer")]
+        [SerializeField] private LanguageManagerInstaller _languageManagerInstaller;
+
+        /// <summary>
+        /// Reference to the scene installer for layout managers
+        /// </summary>
+        [Tooltip("Reference to the scene installer for layout managers")]
+        [SerializeField] private LayoutManagerSceneInstaller _layoutManagerSceneInstaller;
+
         public void InstallBindings(DiContainer Container)
         {
             _inputFieldManagementInstaller.InstallBindings(Container);
             _keyboardSpawnManagerInstaller.InstallBindings(Container);
+            _languageManagerInstaller.InstallBindings(Container);
+            _layoutManagerSceneInstaller.InstallBindings(Container);
         }
     }
 }
