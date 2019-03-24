@@ -14,5 +14,7 @@ namespace VirtualKeyboard.Blueprints.KeyboardLayout
         /// Name of the layout
         /// </summary>
         string Name { get; }
+
+        int AmountOfPages { get; }
     }
 }

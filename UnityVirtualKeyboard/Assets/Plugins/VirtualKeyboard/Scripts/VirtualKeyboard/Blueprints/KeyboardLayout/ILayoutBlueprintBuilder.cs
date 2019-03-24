@@ -9,15 +9,21 @@ namespace VirtualKeyboard.Blueprints.KeyboardLayout
     /// </summary>
     public class ILayoutBlueprintBuilder
     {
+        private string _name;
+
         private List<IRowBlueprint> _rows;
 
-        public ILayoutBlueprintBuilder() : this(new List<IRowBlueprint>())
+        private int _amountOfPages;
+
+        public ILayoutBlueprintBuilder() : this(new List<IRowBlueprint>(), "", 0)
         {
         }
 
-        private ILayoutBlueprintBuilder(List<IRowBlueprint> rows)
+        private ILayoutBlueprintBuilder(List<IRowBlueprint> rows, string name, int amountOfPages)
         {
             _rows = rows;
+            _name = name;
+            _amountOfPages = amountOfPages;
         }
 
         public ILayoutBlueprintBuilder WithNewRow(IRowBlueprint row)
@@ -26,10 +32,24 @@ namespace VirtualKeyboard.Blueprints.KeyboardLayout
             return this;
         }
 
+        public ILayoutBlueprintBuilder WithName(string name)
+        {
+            _name = name;
+            return this;
+        }
+
+        public ILayoutBlueprintBuilder WithAmountOfPages(int amountOfPages)
+        {
+            _amountOfPages = amountOfPages;
+            return this;
+        }
+
         public ILayoutBlueprint Build()
         {
             ILayoutBlueprint layout = Substitute.For<ILayoutBlueprint>();
             layout.RowBlueprints.Returns(_rows);
+            layout.AmountOfPages.Returns(_amountOfPages);
+            layout.Name.Returns(_name);
 
             return layout;
         }

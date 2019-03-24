@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using UnityEngine;
 using VirtualKeyboard.Blueprints.KeyboardLayout;
 using VirtualKeyboard.Blueprints.KeyboardLayoutCollection;
 using VirtualKeyboard.Data.Button;
@@ -64,21 +65,13 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
         private ILayoutBlueprint _currentLayout;
 
         /// <summary>
-        /// Sets the language by the index
-        /// </summary>
-        /// <param name="index">Index of the language to set</param>
-        public void SetLanguage(int index)
-        {
-
-        }
-
-        /// <summary>
         /// Sets layout state
         /// </summary>
         /// <param name="state">New layout state</param>
         public void SetState(LayoutManagerState state)
         {
             _currentState = state;
+            _currentPageNumber = 0;
             switch (state)
             {
                 case LayoutManagerState.Letters:
@@ -99,6 +92,7 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
         private void SwitchToDigits()
         {
             _currentLayout = _layoutCollection.Digits;
+            SpawnCurrentLayout();
         }
 
         /// <summary>
@@ -107,6 +101,7 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
         private void SwitchToSymbols()
         {
             _currentLayout = _layoutCollection.Symbols;
+            SpawnCurrentLayout();
         }
 
         /// <summary>
@@ -141,17 +136,14 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
         /// <param name="number"></param>
         public void SetLayoutPageByIndex(int number)
         {
-            if (number < 0)
+            if (_currentLayout.AmountOfPages < 1)
             {
-                _currentPageNumber = 0;
+                Debug.LogError($"Layout manager: amount of pages in the current layout should be >= 1, but is was {_currentLayout.AmountOfPages}");
+                return;
             }
-            /*else if(number>_currentLayout.)
-            {
-                
-            }*/
-            //TODO: add amount of pages to layout
+            _currentPageNumber = number % _currentLayout.AmountOfPages;
 
-
+            SpawnCurrentLayout();
         }
 
         /// <summary>
@@ -159,7 +151,7 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
         /// </summary>
         public void SetNextLayoutPage()
         {
-
+           SetLayoutPageByIndex(++_currentPageNumber);
         }
     }
 
@@ -168,11 +160,6 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
     /// </summary>
     public interface ILayoutManager
     {
-        /// <summary>
-        /// Sets the language by the index
-        /// </summary>
-        /// <param name="index">Index of the language to set</param>
-        void SetLanguage(int index);
 
         /// <summary>
         /// Sets layout state

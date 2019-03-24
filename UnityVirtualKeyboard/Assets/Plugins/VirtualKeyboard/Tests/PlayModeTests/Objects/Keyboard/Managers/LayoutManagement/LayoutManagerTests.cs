@@ -71,6 +71,8 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Managers.LayoutMa
             #region Collection creation
 
             var digits = new ILayoutBlueprintBuilder()
+                .WithName("Digits")
+                .WithAmountOfPages(1)
                 .WithNewRow(
                     new IRowBlueprintBuilder()
                         .WithNewButton(
@@ -98,6 +100,8 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Managers.LayoutMa
                 .Build();
 
             var symbols = new ILayoutBlueprintBuilder()
+                .WithName("Symbols")
+                .WithAmountOfPages(2)
                 .WithNewRow(
                     new IRowBlueprintBuilder()
                         .WithNewButton(
@@ -119,6 +123,8 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Managers.LayoutMa
                 .Build();
 
             var englishLayout = new ILayoutBlueprintBuilder()
+                .WithName("English")
+                .WithAmountOfPages(2)
                 .WithNewRow(
                     new IRowBlueprintBuilder()
                         .WithNewButton(
@@ -148,6 +154,8 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Managers.LayoutMa
                 .Build();
 
             var russianLayout = new ILayoutBlueprintBuilder()
+                .WithName("Russian")
+                .WithAmountOfPages(2)
                 .WithNewRow(
                     new IRowBlueprintBuilder()
                         .WithNewButton(
@@ -190,24 +198,24 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Managers.LayoutMa
         }
 
         [UnityTest]
-        public IEnumerator Set_State_To_Letters()
+        public IEnumerator Set_State_To_Letters_And_Then_To_Digits()
         {
             List<IRowParameters> received = new List<IRowParameters>();
          
             _rowsManager.AddRow(Arg.Do<IRowParameters>(parameters =>
             {
-                Debug.Log("Received");
                 received.Add(parameters);
             }));
 
             _target.SetState(LayoutManagerState.Letters);
+            _target.SetState(LayoutManagerState.Digits);
 
-            Assert.AreEqual(2, received.Count);
-            Assert.AreEqual(_lettersPanel.transform, received[0].RowsParent);
-            Assert.AreEqual(_lettersPanel.transform, received[1].RowsParent);
+            Assert.AreEqual(4, received.Count);
+            Assert.AreEqual(_digitsPanel.transform, received[2].RowsParent);
+            Assert.AreEqual(_digitsPanel.transform, received[3].RowsParent);
 
-            Assert.AreEqual(0, received[0].Page);
-            Assert.AreEqual(0, received[1].Page);
+            Assert.AreEqual(0, received[2].Page);
+            Assert.AreEqual(0, received[3].Page);
 
             int x = 0;
             int y = 0;
@@ -217,7 +225,78 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Managers.LayoutMa
                 {
                     switch (x)
                     {
-                        case 0:
+                        case 2:
+                            switch (y)
+                            {
+                                case 0:
+                                    Assert.AreEqual("1", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                                case 1:
+                                    Assert.AreEqual("2", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                                case 2:
+                                    Assert.AreEqual("3", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                            }
+                            break;
+                        case 3:
+                            switch (y)
+                            {
+                                case 0:
+                                    Assert.AreEqual("4", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                                case 1:
+                                    Assert.AreEqual("5", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(2, button.ButtonHorizontalSize);
+                                    break;
+                                case 2:
+                                    Assert.AreEqual("6", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(2, button.ButtonHorizontalSize);
+                                    break;
+                            }
+                            break;
+                    }
+                    y++;
+                }
+                x++;
+            }
+
+            yield break;
+        }
+
+        [UnityTest]
+        public IEnumerator Set_State_To_Letters_And_Then_To_Shift()
+        {
+            List<IRowParameters> received = new List<IRowParameters>();
+
+            _rowsManager.AddRow(Arg.Do<IRowParameters>(parameters =>
+            {
+                received.Add(parameters);
+            }));
+
+            _target.SetState(LayoutManagerState.Letters);
+            _target.SetLayoutPageByIndex(1);
+
+            Assert.AreEqual(4, received.Count);
+            Assert.AreEqual(_lettersPanel.transform, received[2].RowsParent);
+            Assert.AreEqual(_lettersPanel.transform, received[3].RowsParent);
+
+            Assert.AreEqual(1, received[2].Page);
+            Assert.AreEqual(1, received[3].Page);
+
+            int x = 0;
+            int y = 0;
+            foreach (var rowParameters in received)
+            {
+                foreach (var button in rowParameters.Buttons)
+                {
+                    switch (x)
+                    {
+                        case 2:
                             switch (y)
                             {
                                 case 0:
@@ -234,7 +313,7 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Managers.LayoutMa
                                     break;
                             }
                             break;
-                        case 1:
+                        case 3:
                             switch (y)
                             {
                                 case 0:
@@ -257,18 +336,211 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Managers.LayoutMa
         }
 
         [UnityTest]
-        public IEnumerator Set_State_To_Letters_And_To_Shift()
+        public IEnumerator Set_State_To_Letters()
         {
             List<IRowParameters> received = new List<IRowParameters>();
 
             _rowsManager.AddRow(Arg.Do<IRowParameters>(parameters =>
             {
-                Debug.Log("Received");
                 received.Add(parameters);
             }));
 
             _target.SetState(LayoutManagerState.Letters);
-            _target.SetLayoutPageByIndex(1);
+            
+
+            Assert.AreEqual(2, received.Count);
+            Assert.AreEqual(_lettersPanel.transform, received[0].RowsParent);
+            Assert.AreEqual(_lettersPanel.transform, received[1].RowsParent);
+
+            Assert.AreEqual(0, received[0].Page);
+            Assert.AreEqual(0, received[1].Page);
+
+            int x = 0;
+            int y = 0;
+            foreach (var rowParameters in received)
+            {
+                foreach (var button in rowParameters.Buttons)
+                {
+                    switch (x)
+                    {
+                        case 2:
+                            switch (y)
+                            {
+                                case 0:
+                                    Assert.AreEqual("q", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                                case 1:
+                                    Assert.AreEqual("w", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                                case 2:
+                                    Assert.AreEqual("e", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                            }
+                            break;
+                        case 3:
+                            switch (y)
+                            {
+                                case 0:
+                                    Assert.AreEqual("z", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                                case 1:
+                                    Assert.AreEqual(" ", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(2, button.ButtonHorizontalSize);
+                                    break;
+                            }
+                            break;
+                    }
+                    y++;
+                }
+                x++;
+            }
+
+            yield break;
+        }
+
+        [UnityTest]
+        public IEnumerator Set_State_To_Letters_And_Then_To_Symbols()
+        {
+            List<IRowParameters> received = new List<IRowParameters>();
+
+            _rowsManager.AddRow(Arg.Do<IRowParameters>(parameters =>
+            {
+                received.Add(parameters);
+            }));
+
+            _target.SetState(LayoutManagerState.Letters);
+            _target.SetState(LayoutManagerState.Symbols);
+
+            Assert.AreEqual(4, received.Count);
+            Assert.AreEqual(_digitsPanel.transform, received[2].RowsParent);
+            Assert.AreEqual(_digitsPanel.transform, received[3].RowsParent);
+
+            Assert.AreEqual(0, received[2].Page);
+            Assert.AreEqual(0, received[3].Page);
+
+            int x = 0;
+            int y = 0;
+            foreach (var rowParameters in received)
+            {
+                foreach (var button in rowParameters.Buttons)
+                {
+                    switch (x)
+                    {
+                        case 2:
+                            switch (y)
+                            {
+                                case 0:
+                                    Assert.AreEqual("!", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                                case 1:
+                                    Assert.AreEqual("@", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                            }
+                            break;
+                        case 3:
+                            switch (y)
+                            {
+                                case 0:
+                                    Assert.AreEqual("$", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                            }
+                            break;
+                    }
+                    y++;
+                }
+                x++;
+            }
+
+            yield break;
+        }
+
+        [UnityTest]
+        public IEnumerator Set_State_To_Letters_And_Then_To_Russian()
+        {
+            List<IRowParameters> received = new List<IRowParameters>();
+
+            _rowsManager.AddRow(Arg.Do<IRowParameters>(parameters =>
+            {
+                received.Add(parameters);
+            }));
+
+            _target.SetState(LayoutManagerState.Letters);
+            _languageManager.CurrentLanguageIndex.Returns(1);
+            _target.SetState(LayoutManagerState.Letters);
+
+            Assert.AreEqual(4, received.Count);
+            Assert.AreEqual(_digitsPanel.transform, received[2].RowsParent);
+            Assert.AreEqual(_digitsPanel.transform, received[3].RowsParent);
+
+            Assert.AreEqual(0, received[2].Page);
+            Assert.AreEqual(0, received[3].Page);
+
+            int x = 0;
+            int y = 0;
+            foreach (var rowParameters in received)
+            {
+                foreach (var button in rowParameters.Buttons)
+                {
+                    switch (x)
+                    {
+                        case 2:
+                            switch (y)
+                            {
+                                case 0:
+                                    Assert.AreEqual("é", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                                case 1:
+                                    Assert.AreEqual("ö", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                                case 2:
+                                    Assert.AreEqual("ó", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                            }
+                            break;
+                        case 3:
+                            switch (y)
+                            {
+                                case 0:
+                                    Assert.AreEqual("ô", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(1, button.ButtonHorizontalSize);
+                                    break;
+                                case 1:
+                                    Assert.AreEqual(" ", button.ButtonPageCharacters.ToList()[0]);
+                                    Assert.AreEqual(2, button.ButtonHorizontalSize);
+                                    break;
+                            }
+                            break;
+                    }
+                    y++;
+                }
+                x++;
+            }
+
+            yield break;
+        }
+
+        [UnityTest]
+        public IEnumerator Switch_To_Next_Page()
+        {
+            List<IRowParameters> received = new List<IRowParameters>();
+
+            _rowsManager.AddRow(Arg.Do<IRowParameters>(parameters =>
+            {
+                received.Add(parameters);
+            }));
+
+            _target.SetState(LayoutManagerState.Letters);
+            _target.SetNextLayoutPage();
 
             Assert.AreEqual(4, received.Count);
             Assert.AreEqual(_lettersPanel.transform, received[2].RowsParent);
