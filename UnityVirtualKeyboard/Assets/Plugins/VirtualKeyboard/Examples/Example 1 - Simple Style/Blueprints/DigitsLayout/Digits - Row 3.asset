@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e388ed966af82a04bb7cacf310e4fedf, type: 3}
-  m_Name: Language - Layout
+  m_Script: {fileID: 11500000, guid: 0b140b646a2fbb8488d1bf97b65ecbfe, type: 3}
+  m_Name: Digits - Row 3
   m_EditorClassIdentifier: 
-  _amountOfModes: 2
-  _rowBlueprints:
-  - {fileID: 11400000, guid: 12642ba7938cffe459878d508a641762, type: 2}
-  - {fileID: 11400000, guid: 9582dd80b0c5f2444a024794be075237, type: 2}
+  _amountOfPages: 1
+  _buttons:
+  - _buttonPageCharacters:
+    - 0
+    _buttonHorizontalSize: 1

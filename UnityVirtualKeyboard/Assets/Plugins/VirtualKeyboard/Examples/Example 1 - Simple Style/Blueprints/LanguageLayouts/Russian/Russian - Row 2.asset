@@ -10,47 +10,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b140b646a2fbb8488d1bf97b65ecbfe, type: 3}
-  m_Name: English - Row 1
+  m_Name: Russian - Row 2
   m_EditorClassIdentifier: 
   _amountOfPages: 2
   _buttons:
   - _buttonPageCharacters:
-    - q
-    - Q
+    - "\u0444"
+    - "\u0424"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - w
-    - W
+    - "\u044B"
+    - "\u042B"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - e
-    - E
+    - "\u0432"
+    - "\u0412"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - r
-    - R
+    - "\u0430"
+    - "\u0410"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - t
-    - T
+    - "\u043F"
+    - "\u041F"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - y
-    - Y
+    - "\u0440"
+    - "\u0420"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - u
-    - U
+    - "\u043E"
+    - "\u041E"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - i
-    - I
+    - "\u043B"
+    - "\u041B"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - o
-    - O
+    - "\u0434"
+    - "\u0414"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - p
-    - P
+    - "\u044D"
+    - "\u042D"
+    _buttonHorizontalSize: 1
+  - _buttonPageCharacters:
+    - ':'
+    - ;
     _buttonHorizontalSize: 1

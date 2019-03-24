@@ -2,11 +2,13 @@
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
+using VirtualKeyboard.Blueprints.KeyboardLayout;
 
-namespace VirtualKeyboard.Blueprints.KeyboardLayout
+
+namespace VirtualKeyboard.Blueprints.KeyboardLayoutCollection
 {
-    [CustomEditor(typeof(LayoutBlueprint))]
-    public class LayoutBlueprintInspector : Editor
+    [CustomEditor(typeof(KeyboardLayoutCollection))]
+    public class KeyboardLayoutCollectionInspector : Editor
     {
         /// <summary>
         ///     Size of the space
@@ -16,7 +18,7 @@ namespace VirtualKeyboard.Blueprints.KeyboardLayout
         /// <summary>
         ///     Reorderable list of the buttons
         /// </summary>
-        private ReorderableList _rowsList;
+        private ReorderableList _languagesList;
 
         /// <summary>
         ///     Height of the line o the editor
@@ -38,26 +40,29 @@ namespace VirtualKeyboard.Blueprints.KeyboardLayout
             _lineHeightSpace = _lineHeight + SpaceSize;
 
             //Create list
-            _rowsList = new ReorderableList(serializedObject, serializedObject.FindProperty("_rowBlueprints"), true, false,
+            _languagesList = new ReorderableList(serializedObject, serializedObject.FindProperty("_languages"), true, false,
                 true, true);
 
             // Callback for drawing the elements
-            _rowsList.drawElementCallback = (rect, index, active, focused) =>
+            _languagesList.drawElementCallback = (rect, index, active, focused) =>
             {
-                var element = _rowsList.serializedProperty.GetArrayElementAtIndex(index);
+                var element = _languagesList.serializedProperty.GetArrayElementAtIndex(index);
                 EditorGUI.PropertyField(new Rect(rect.x, rect.y, rect.width, _lineHeight), element, GUIContent.none);
             };
 
-            _rowsList.elementHeightCallback = index => _lineHeightSpace;
+            _languagesList.elementHeightCallback = index => _lineHeightSpace;
         }
+
 
         public override void OnInspectorGUI()
         {
             serializedObject.Update();
 
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("_amountOfPages"));
+            EditorGUILayout.LabelField("Languages: ");
+            _languagesList.DoLayoutList();
 
-            _rowsList.DoLayoutList();
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_symbols"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("_digits"));
             serializedObject.ApplyModifiedProperties();
         }
     }

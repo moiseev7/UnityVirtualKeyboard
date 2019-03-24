@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b34d06568b9dcc4e8e9ff0350600d50, type: 3}
+  m_Name: KeyboardLayoutCollection
+  m_EditorClassIdentifier: 
+  _languages:
+  - {fileID: 11400000, guid: aae76d7ee48094644aa1ed1b1986c5da, type: 2}
+  - {fileID: 11400000, guid: f234e404492e23b43acda184186db5f6, type: 2}
+  _symbols: {fileID: 0}
+  _digits: {fileID: 11400000, guid: 1cb07d238a1cb7247b9cfd2fce293ad4, type: 2}

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e388ed966af82a04bb7cacf310e4fedf, type: 3}
+  m_Name: Russian - Layout
+  m_EditorClassIdentifier: 
+  _name: 
+  _amountOfPages: 2
+  _rowBlueprints:
+  - {fileID: 11400000, guid: d92e2b7be597f2243b3ed0a9273098e2, type: 2}
+  - {fileID: 11400000, guid: 4a0c239ef578b654098232c55f2f2af3, type: 2}
+  - {fileID: 11400000, guid: f41792dd5a322e744906837f926fdf71, type: 2}
+  - {fileID: 11400000, guid: 300f1e59302d0fa4aa6f52e87b7b2e3b, type: 2}
+  - {fileID: 11400000, guid: e736fe6642de8c64ba1fc99dd01a2b8d, type: 2}

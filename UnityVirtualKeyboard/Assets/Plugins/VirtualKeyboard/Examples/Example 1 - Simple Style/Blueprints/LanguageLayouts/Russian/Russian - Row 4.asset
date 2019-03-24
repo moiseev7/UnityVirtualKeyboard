@@ -10,47 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0b140b646a2fbb8488d1bf97b65ecbfe, type: 3}
-  m_Name: English - Row 1
+  m_Name: Russian - Row 4
   m_EditorClassIdentifier: 
   _amountOfPages: 2
   _buttons:
   - _buttonPageCharacters:
-    - q
-    - Q
+    - /
+    - /
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - w
-    - W
+    - .com
+    - .net
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - e
-    - E
+    - ' '
+    - ' '
+    _buttonHorizontalSize: 6
+  - _buttonPageCharacters:
+    - ','
+    - ','
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - r
-    - R
-    _buttonHorizontalSize: 1
-  - _buttonPageCharacters:
-    - t
-    - T
-    _buttonHorizontalSize: 1
-  - _buttonPageCharacters:
-    - y
-    - Y
-    _buttonHorizontalSize: 1
-  - _buttonPageCharacters:
-    - u
-    - U
-    _buttonHorizontalSize: 1
-  - _buttonPageCharacters:
-    - i
-    - I
-    _buttonHorizontalSize: 1
-  - _buttonPageCharacters:
-    - o
-    - O
-    _buttonHorizontalSize: 1
-  - _buttonPageCharacters:
-    - p
-    - P
+    - .
+    - .
     _buttonHorizontalSize: 1

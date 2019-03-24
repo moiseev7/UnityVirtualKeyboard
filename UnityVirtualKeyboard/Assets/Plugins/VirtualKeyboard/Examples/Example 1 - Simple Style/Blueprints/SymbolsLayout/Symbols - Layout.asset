@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e388ed966af82a04bb7cacf310e4fedf, type: 3}
+  m_Name: Symbols - Layout
+  m_EditorClassIdentifier: 
+  _name: 
+  _amountOfPages: 2
+  _rowBlueprints:
+  - {fileID: 11400000, guid: 008f515d56001f545b1e39462abcc1b0, type: 2}
+  - {fileID: 11400000, guid: 497e88a2fa763b74ca2e29d018042850, type: 2}
+  - {fileID: 11400000, guid: c9c5de761fa1fb34f95792d0bd993ec5, type: 2}
+  - {fileID: 11400000, guid: a9ad1bb6854350a4e92ae96e7831e460, type: 2}
