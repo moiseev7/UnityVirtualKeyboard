@@ -31,17 +31,17 @@ namespace VirtualKeyboard.Blueprints.KeyboardLayoutCollection
         /// <summary>
         /// List of the language layouts
         /// </summary>
-        public List<LayoutBlueprint> Languages => _languages;
+        public IEnumerable<ILayoutBlueprint> Languages => _languages;
 
         /// <summary>
         /// Symbols layout
         /// </summary>
-        public LayoutBlueprint Symbols => _symbols;
+        public ILayoutBlueprint Symbols => _symbols;
 
         /// <summary>
         /// Digits layout
         /// </summary>
-        public LayoutBlueprint Digits => _digits;
+        public ILayoutBlueprint Digits => _digits;
 
         void OnValidate()
         {

@@ -49,13 +49,13 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Blueprints.KeyboardRow
             var firstButton = _target.Buttons.First();
             var secondButton = _target.Buttons.Last();
 
-            Assert.AreEqual(2, firstButton.ButtonModeCharacters.Count());
-            Assert.AreEqual(2, secondButton.ButtonModeCharacters.Count());
-            Assert.AreEqual("One", firstButton.ButtonModeCharacters.First());
-            Assert.AreEqual("", firstButton.ButtonModeCharacters.Last());
+            Assert.AreEqual(2, firstButton.ButtonPageCharacters.Count());
+            Assert.AreEqual(2, secondButton.ButtonPageCharacters.Count());
+            Assert.AreEqual("One", firstButton.ButtonPageCharacters.First());
+            Assert.AreEqual("", firstButton.ButtonPageCharacters.Last());
 
-            Assert.AreEqual("1", secondButton.ButtonModeCharacters.First());
-            Assert.AreEqual("2", secondButton.ButtonModeCharacters.Last());
+            Assert.AreEqual("1", secondButton.ButtonPageCharacters.First());
+            Assert.AreEqual("2", secondButton.ButtonPageCharacters.Last());
         }
     }
 }

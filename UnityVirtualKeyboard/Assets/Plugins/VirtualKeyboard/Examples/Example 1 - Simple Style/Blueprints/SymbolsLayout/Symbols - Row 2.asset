@@ -15,42 +15,42 @@ MonoBehaviour:
   _amountOfPages: 2
   _buttons:
   - _buttonPageCharacters:
-    - 
-    - 
+    - +
+    - "\xA2"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - 
-    - 
+    - _
+    - "\xA3"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - 
-    - 
+    - =
+    - "\xA5"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - 
-    - 
+    - '|'
+    - "\u20AC"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - 
-    - 
+    - /
+    - "\u20A1"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - 
-    - 
+    - \
+    - "\u20A9"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - 
-    - 
+    - <
+    - "\u20AA"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - 
-    - 
+    - '>'
+    - "\u20A6"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - 
-    - 
+    - '['
+    - "\xA4"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - 
-    - 
+    - ']'
+    - '`'
     _buttonHorizontalSize: 1

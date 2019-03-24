@@ -15,42 +15,14 @@ MonoBehaviour:
   _amountOfPages: 2
   _buttons:
   - _buttonPageCharacters:
-    - 
-    - 
+    - ~
+    - "\xA1vvvvvvvvvvvvvvvvvv"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - 
-    - 
+    - '`'
+    - "\xBF"
     _buttonHorizontalSize: 1
   - _buttonPageCharacters:
-    - 
-    - 
-    _buttonHorizontalSize: 1
-  - _buttonPageCharacters:
-    - 
-    - 
-    _buttonHorizontalSize: 1
-  - _buttonPageCharacters:
-    - 
-    - 
-    _buttonHorizontalSize: 1
-  - _buttonPageCharacters:
-    - 
-    - 
-    _buttonHorizontalSize: 1
-  - _buttonPageCharacters:
-    - 
-    - 
-    _buttonHorizontalSize: 1
-  - _buttonPageCharacters:
-    - 
-    - 
-    _buttonHorizontalSize: 1
-  - _buttonPageCharacters:
-    - 
-    - 
-    _buttonHorizontalSize: 1
-  - _buttonPageCharacters:
-    - 
-    - 
-    _buttonHorizontalSize: 1
+    - ' '
+    - ' '
+    _buttonHorizontalSize: 8

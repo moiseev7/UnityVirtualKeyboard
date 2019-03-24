@@ -15,5 +15,5 @@ MonoBehaviour:
   _languages:
   - {fileID: 11400000, guid: aae76d7ee48094644aa1ed1b1986c5da, type: 2}
   - {fileID: 11400000, guid: f234e404492e23b43acda184186db5f6, type: 2}
-  _symbols: {fileID: 0}
+  _symbols: {fileID: 11400000, guid: 538bd485e53bb3f43adff47e3f37383f, type: 2}
   _digits: {fileID: 11400000, guid: 1cb07d238a1cb7247b9cfd2fce293ad4, type: 2}

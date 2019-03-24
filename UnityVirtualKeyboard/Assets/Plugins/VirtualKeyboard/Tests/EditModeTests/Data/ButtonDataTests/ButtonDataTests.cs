@@ -46,9 +46,9 @@ namespace VirtualKeyboard.Data.ButtonDataTests
             {
                 _target = new ButtonData(new List<string> {"first", "second"}, 1);
                 _target.SetPageAmount(2);
-                Assert.AreEqual(_target.ButtonModeCharacters.Count(), 2);
-                Assert.AreEqual("first", _target.ButtonModeCharacters.First());
-                Assert.AreEqual("second", _target.ButtonModeCharacters.Last());
+                Assert.AreEqual(_target.ButtonPageCharacters.Count(), 2);
+                Assert.AreEqual("first", _target.ButtonPageCharacters.First());
+                Assert.AreEqual("second", _target.ButtonPageCharacters.Last());
             }
 
             [Test]
@@ -56,9 +56,9 @@ namespace VirtualKeyboard.Data.ButtonDataTests
             {
                 _target = new ButtonData(new List<string> { "first", "second", "third" }, 1);
                 _target.SetPageAmount(2);
-                Assert.AreEqual(_target.ButtonModeCharacters.Count(), 2);
-                Assert.AreEqual("first", _target.ButtonModeCharacters.First());
-                Assert.AreEqual("second", _target.ButtonModeCharacters.Last());
+                Assert.AreEqual(_target.ButtonPageCharacters.Count(), 2);
+                Assert.AreEqual("first", _target.ButtonPageCharacters.First());
+                Assert.AreEqual("second", _target.ButtonPageCharacters.Last());
             }
 
             [Test]
@@ -66,9 +66,9 @@ namespace VirtualKeyboard.Data.ButtonDataTests
             {
                 _target = new ButtonData(new List<string> { "first"}, 1);
                 _target.SetPageAmount(2);
-                Assert.AreEqual(_target.ButtonModeCharacters.Count(), 2);
-                Assert.AreEqual("first", _target.ButtonModeCharacters.First());
-                Assert.AreEqual("", _target.ButtonModeCharacters.Last());
+                Assert.AreEqual(_target.ButtonPageCharacters.Count(), 2);
+                Assert.AreEqual("first", _target.ButtonPageCharacters.First());
+                Assert.AreEqual("", _target.ButtonPageCharacters.Last());
             }
         }
     }

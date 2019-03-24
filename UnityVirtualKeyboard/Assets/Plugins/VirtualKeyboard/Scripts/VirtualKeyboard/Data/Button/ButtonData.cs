@@ -31,10 +31,9 @@ namespace VirtualKeyboard.Data.Button
 
         /// <summary>
         ///     IEnumerable of the button characters. Each member of the list represents characters that will be typed when the
-        ///     button is
-        ///     pressed in a certain mode (e.g. SHIFT or non-SHIFT mode)
+        ///     button is pressed in a certain page (e.g. SHIFT or non-SHIFT mode)
         /// </summary>
-        public IEnumerable<string> ButtonModeCharacters => _buttonPageCharacters;
+        public IEnumerable<string> ButtonPageCharacters => _buttonPageCharacters;
 
         /// <summary>
         ///     Horizontal size of the button in size units. The default size of the button is 1

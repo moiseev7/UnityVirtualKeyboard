@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using VirtualKeyboard.Blueprints.KeyboardLayoutCollection;
+using Zenject;
 
 namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
 {
@@ -7,6 +9,11 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
     /// </summary>
     public class LayoutManager : ILayoutManager
     {
+        /// <summary>
+        /// Injection of the layout collection
+        /// </summary>
+        [Inject] private IKeyboardLayoutCollection _layoutCollection;
+
         /// <summary>
         /// Sets the language by the index
         /// </summary>

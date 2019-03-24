@@ -12,7 +12,7 @@ namespace VirtualKeyboard.Data.Button
         ///     button is
         ///     pressed in a certain mode (e.g. SHIFT or non-SHIFT mode)
         /// </summary>
-        IEnumerable<string> ButtonModeCharacters { get; }
+        IEnumerable<string> ButtonPageCharacters { get; }
 
         /// <summary>
         ///     Horizontal size of the button in size units. The default size of the button is 1

@@ -8,16 +8,16 @@ namespace VirtualKeyboard.Blueprints.KeyboardLayoutCollection
         /// <summary>
         /// List of the language layouts
         /// </summary>
-        List<LayoutBlueprint> Languages { get; }
+        IEnumerable<ILayoutBlueprint> Languages { get; }
 
         /// <summary>
         /// Symbols layout
         /// </summary>
-        LayoutBlueprint Symbols { get; }
+        ILayoutBlueprint Symbols { get; }
 
         /// <summary>
         /// Digits layout
         /// </summary>
-        LayoutBlueprint Digits { get;}
+        ILayoutBlueprint Digits { get;}
     }
 }
