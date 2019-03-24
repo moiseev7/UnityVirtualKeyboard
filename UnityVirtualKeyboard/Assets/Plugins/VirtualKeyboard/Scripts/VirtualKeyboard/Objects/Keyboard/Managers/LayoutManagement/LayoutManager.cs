@@ -1,5 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using VirtualKeyboard.Blueprints.KeyboardLayout;
 using VirtualKeyboard.Blueprints.KeyboardLayoutCollection;
+using VirtualKeyboard.Data.Button;
+using VirtualKeyboard.Objects.Keyboard.Managers.LanguageManagement;
+using VirtualKeyboard.Objects.Keyboard.Managers.RowsManagement;
 using Zenject;
 
 namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
@@ -13,6 +17,51 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
         /// Injection of the layout collection
         /// </summary>
         [Inject] private IKeyboardLayoutCollection _layoutCollection;
+
+        /// <summary>
+        /// Injection of the rows manager
+        /// </summary>
+        [Inject] private IRowsManager _rowsManager;
+
+        /// <summary>
+        /// Injection of the language manager
+        /// </summary>
+        [Inject] private ILanguageManager _languageManager;
+
+        /// <summary>
+        /// Injection of the parameters of the letters panel
+        /// </summary>
+        [Inject(Id = "LayoutManager - Letters Panel Parameters")]
+        private ILayoutPanelParameters _lettersPanelParameters;
+
+        /// <summary>
+        /// Injection of the parameters of the symbols panel
+        /// </summary>
+        [Inject(Id = "LayoutManager - Symbols Panel Parameters")]
+        private ILayoutPanelParameters _symbolsPanelParameters;
+
+        /// <summary>
+        /// Injection of the parameters of the digits panel
+        /// </summary>
+        [Inject(Id = "LayoutManager - Digits Panel Parameters")]
+        private ILayoutPanelParameters _digitsPanelParameters;
+
+        
+
+        /// <summary>
+        /// Number of the current page
+        /// </summary>
+        private int _currentPageNumber = 0;
+
+        /// <summary>
+        /// Current state of the layout manager
+        /// </summary>
+        private LayoutManagerState _currentState = LayoutManagerState.Letters;
+
+        /// <summary>
+        /// Reference to the current layout
+        /// </summary>
+        private ILayoutBlueprint _currentLayout;
 
         /// <summary>
         /// Sets the language by the index
@@ -29,7 +78,61 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
         /// <param name="state">New layout state</param>
         public void SetState(LayoutManagerState state)
         {
+            _currentState = state;
+            switch (state)
+            {
+                case LayoutManagerState.Letters:
+                    SwitchToLetters();
+                    break;
+                case LayoutManagerState.Symbols:
+                    SwitchToSymbols();
+                    break;
+                case LayoutManagerState.Digits:
+                    SwitchToDigits();
+                    break;
+            }
+        }
 
+        /// <summary>
+        /// Switch to the digits layout
+        /// </summary>
+        private void SwitchToDigits()
+        {
+            _currentLayout = _layoutCollection.Digits;
+        }
+
+        /// <summary>
+        /// Switches to the symbols layout
+        /// </summary>
+        private void SwitchToSymbols()
+        {
+            _currentLayout = _layoutCollection.Symbols;
+        }
+
+        /// <summary>
+        /// Switches to the letters layout
+        /// </summary>
+        private void SwitchToLetters()
+        {
+            _currentLayout = _layoutCollection.Languages.ToList()[_languageManager.CurrentLanguageIndex];
+            SpawnCurrentLayout();
+
+        }
+
+        private void SpawnCurrentLayout()
+        {
+            foreach (var rowBlueprint in _currentLayout.RowBlueprints)
+            {
+                var builder = new IRowParametersBuilder();
+                builder = builder.WithPage(_currentPageNumber)
+                    .WithParentTransform(_lettersPanelParameters.RowsParenTransform);
+                foreach (var button in rowBlueprint.Buttons)
+                {
+                    builder = builder.WithNewButton(button);
+                }
+
+                _rowsManager.AddRow(builder.Build());
+            }
         }
 
         /// <summary>
@@ -38,6 +141,16 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
         /// <param name="number"></param>
         public void SetLayoutPageByIndex(int number)
         {
+            if (number < 0)
+            {
+                _currentPageNumber = 0;
+            }
+            /*else if(number>_currentLayout.)
+            {
+                
+            }*/
+            //TODO: add amount of pages to layout
+
 
         }
 
