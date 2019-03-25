@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using VirtualKeyboard.Objects.Keyboard.Managers.ButtonsManagement;
 using VirtualKeyboard.Objects.Keyboard.Managers.RowsManagement;
 using Zenject;
 
@@ -14,6 +15,8 @@ namespace VirtualKeyboard.Objects.Row
         /// </summary>
         [Inject(Id = "RowsManager - Pool Parent Transform")]
         private Transform _poolParent;
+
+        [Inject] private IButtonsManager _buttonsManager;
 
 
         public class Pool : MonoMemoryPool<IRowParameters, VirtualKeyboardRowObject>
@@ -32,18 +35,23 @@ namespace VirtualKeyboard.Objects.Row
         private void OnDespawned()
         {
             transform?.SetParent(_poolParent);
+            _buttonsManager.Reset();
         }
 
         private void Reinitialize(IRowParameters parameters)
         {
             transform?.SetParent(parameters.RowsParent);
             transform?.SetAsLastSibling();
-            SpawnButtons();
+            SpawnButtons(parameters);
         }
 
-        private void SpawnButtons()
+        private void SpawnButtons(IRowParameters parameters)
         {
-            
+            foreach (var buttonData in parameters.Buttons)
+            {
+                _buttonsManager.AddButton(new IButtonsParametersBuilder().WithButtonData(buttonData).WithButtonParent(transform)
+                    .WithPageNumber(parameters.Page).Build());
+            }
         }
     }
 }
