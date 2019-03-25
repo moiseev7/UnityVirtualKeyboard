@@ -217,6 +217,12 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Managers.LayoutMa
             Assert.AreEqual(0, received[2].Page);
             Assert.AreEqual(0, received[3].Page);
 
+            _rowsManager.Received(2).ResetRows();
+
+            Assert.AreEqual(false, _lettersPanel.activeInHierarchy);
+            Assert.AreEqual(false, _symbolsPanel.activeInHierarchy);
+            Assert.AreEqual(true, _digitsPanel.activeInHierarchy);
+
             int x = 0;
             int y = 0;
             foreach (var rowParameters in received)
@@ -288,6 +294,12 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Managers.LayoutMa
             Assert.AreEqual(1, received[2].Page);
             Assert.AreEqual(1, received[3].Page);
 
+            _rowsManager.Received(2).ResetRows();
+
+            Assert.AreEqual(true, _lettersPanel.activeInHierarchy);
+            Assert.AreEqual(false, _symbolsPanel.activeInHierarchy);
+            Assert.AreEqual(false, _digitsPanel.activeInHierarchy);
+
             int x = 0;
             int y = 0;
             foreach (var rowParameters in received)
@@ -354,6 +366,12 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Managers.LayoutMa
 
             Assert.AreEqual(0, received[0].Page);
             Assert.AreEqual(0, received[1].Page);
+
+            _rowsManager.Received(1).ResetRows();
+
+            Assert.AreEqual(true, _lettersPanel.activeInHierarchy);
+            Assert.AreEqual(false, _symbolsPanel.activeInHierarchy);
+            Assert.AreEqual(false, _digitsPanel.activeInHierarchy);
 
             int x = 0;
             int y = 0;
@@ -422,6 +440,12 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Managers.LayoutMa
             Assert.AreEqual(0, received[2].Page);
             Assert.AreEqual(0, received[3].Page);
 
+            _rowsManager.Received(2).ResetRows();
+
+            Assert.AreEqual(false, _lettersPanel.activeInHierarchy);
+            Assert.AreEqual(true, _symbolsPanel.activeInHierarchy);
+            Assert.AreEqual(false, _digitsPanel.activeInHierarchy);
+
             int x = 0;
             int y = 0;
             foreach (var rowParameters in received)
@@ -481,6 +505,12 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Managers.LayoutMa
 
             Assert.AreEqual(0, received[2].Page);
             Assert.AreEqual(0, received[3].Page);
+
+            _rowsManager.Received(2).ResetRows();
+
+            Assert.AreEqual(true, _lettersPanel.activeInHierarchy);
+            Assert.AreEqual(false, _symbolsPanel.activeInHierarchy);
+            Assert.AreEqual(false, _digitsPanel.activeInHierarchy);
 
             int x = 0;
             int y = 0;
@@ -548,6 +578,12 @@ namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Keyboard.Managers.LayoutMa
 
             Assert.AreEqual(1, received[2].Page);
             Assert.AreEqual(1, received[3].Page);
+
+            _rowsManager.Received(2).ResetRows();
+
+            Assert.AreEqual(true, _lettersPanel.activeInHierarchy);
+            Assert.AreEqual(false, _symbolsPanel.activeInHierarchy);
+            Assert.AreEqual(false, _digitsPanel.activeInHierarchy);
 
             int x = 0;
             int y = 0;

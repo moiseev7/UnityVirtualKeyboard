@@ -92,6 +92,11 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
         private void SwitchToDigits()
         {
             _currentLayout = _layoutCollection.Digits;
+
+            _lettersPanelParameters.PanelObject.SetActive(false);
+            _symbolsPanelParameters.PanelObject.SetActive(false);
+            _digitsPanelParameters.PanelObject.SetActive(true);
+
             SpawnCurrentLayout();
         }
 
@@ -101,6 +106,11 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
         private void SwitchToSymbols()
         {
             _currentLayout = _layoutCollection.Symbols;
+
+            _lettersPanelParameters.PanelObject.SetActive(false);
+            _symbolsPanelParameters.PanelObject.SetActive(true);
+            _digitsPanelParameters.PanelObject.SetActive(false);
+
             SpawnCurrentLayout();
         }
 
@@ -109,6 +119,10 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
         /// </summary>
         private void SwitchToLetters()
         {
+            _lettersPanelParameters.PanelObject.SetActive(true);
+            _symbolsPanelParameters.PanelObject.SetActive(false);
+            _digitsPanelParameters.PanelObject.SetActive(false);
+
             _currentLayout = _layoutCollection.Languages.ToList()[_languageManager.CurrentLanguageIndex];
             SpawnCurrentLayout();
 
@@ -116,6 +130,8 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.LayoutManagement
 
         private void SpawnCurrentLayout()
         {
+            _rowsManager.ResetRows();
+
             foreach (var rowBlueprint in _currentLayout.RowBlueprints)
             {
                 var builder = new IRowParametersBuilder();
