@@ -26,8 +26,7 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.RowsManagement
             Container.Bind<Transform>().WithId("RowsManager - Pool Parent Transform").FromInstance(_rowsParent)
                 .AsCached();
             Container.BindMemoryPool<VirtualKeyboardRowObject, VirtualKeyboardRowObject.Pool>().WithInitialSize(5)
-                .ExpandByOneAtATime().FromComponentInNewPrefab(_config.RowPrefab).UnderTransform(_rowsParent)
-                .AsSingle();
+                .ExpandByOneAtATime().FromComponentInNewPrefab(_config.RowPrefab).UnderTransform(_rowsParent);
 
             Container.BindInterfacesTo<RowsManager>().FromNew().AsSingle().NonLazy();
         }

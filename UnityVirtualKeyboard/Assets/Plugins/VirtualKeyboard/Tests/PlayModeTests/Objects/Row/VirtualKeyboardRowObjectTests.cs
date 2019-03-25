@@ -6,9 +6,9 @@ using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.TestTools;
 using VirtualKeyboard.Data.Button;
-using VirtualKeyboard.Objects.Keyboard.Managers.ButtonsManagement;
 using VirtualKeyboard.Objects.Keyboard.Managers.RowsManagement;
 using VirtualKeyboard.Objects.Row;
+using VirtualKeyboard.Objects.Row.Managers.ButtonsManagement;
 using Zenject;
 
 namespace VirtualKeyboard.Tests.PlayModeTests.Objects.Row

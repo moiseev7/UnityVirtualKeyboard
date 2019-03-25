@@ -1,4 +1,4 @@
-﻿namespace VirtualKeyboard.Objects.Keyboard.Managers.ButtonsManagement
+﻿namespace VirtualKeyboard.Objects.Row.Managers.ButtonsManagement
 {
     /// <summary>
     /// Interface for <see cref="ButtonsManager"/>

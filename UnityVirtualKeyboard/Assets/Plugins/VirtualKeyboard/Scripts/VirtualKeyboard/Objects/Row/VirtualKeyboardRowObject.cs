@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
-using VirtualKeyboard.Objects.Keyboard.Managers.ButtonsManagement;
 using VirtualKeyboard.Objects.Keyboard.Managers.RowsManagement;
+using VirtualKeyboard.Objects.Row.Managers.ButtonsManagement;
 using Zenject;
 
 namespace VirtualKeyboard.Objects.Row
@@ -34,14 +34,14 @@ namespace VirtualKeyboard.Objects.Row
 
         private void OnDespawned()
         {
-            transform?.SetParent(_poolParent);
+            transform.SetParent(_poolParent);
             _buttonsManager.Reset();
         }
 
         private void Reinitialize(IRowParameters parameters)
         {
-            transform?.SetParent(parameters.RowsParent);
-            transform?.SetAsLastSibling();
+            transform.SetParent(parameters.RowsParent);
+            transform.SetAsLastSibling();
             SpawnButtons(parameters);
         }
 

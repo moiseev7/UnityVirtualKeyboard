@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace VirtualKeyboard.Objects.Keyboard.Managers.ButtonsManagement
+﻿namespace VirtualKeyboard.Objects.Row.Managers.ButtonsManagement
 {
     /// <summary>
     /// Manager for the keyboard buttons
