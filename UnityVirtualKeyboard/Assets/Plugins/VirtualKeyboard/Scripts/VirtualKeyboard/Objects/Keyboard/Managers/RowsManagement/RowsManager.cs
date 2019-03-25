@@ -22,10 +22,16 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.RowsManagement
         private List<VirtualKeyboardRowObject> _spawned = new List<VirtualKeyboardRowObject>();
 
         /// <summary>
+        /// Index of the row
+        /// </summary>
+        private int _rowIndex = 0;
+
+        /// <summary>
         /// Resets the rows
         /// </summary>
         public void ResetRows()
         {
+            _rowIndex = 0;
             foreach (var rowObject in _spawned.ToList())
             {
                 _pool.Despawn(rowObject);
@@ -40,7 +46,9 @@ namespace VirtualKeyboard.Objects.Keyboard.Managers.RowsManagement
         /// <param name="rowParameters">Parameters of the row</param>
         public void AddRow(IRowParameters rowParameters)
         {
-            _spawned.Add(_pool.Spawn(rowParameters));
+            var spawned = _pool.Spawn(rowParameters);
+            spawned.name = $"Row - {_rowIndex++}";
+            _spawned.Add(spawned);
         }
     }
 }

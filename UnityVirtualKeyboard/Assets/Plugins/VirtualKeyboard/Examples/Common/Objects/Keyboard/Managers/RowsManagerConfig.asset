@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b20b51729e97434b984d7e35fc78173, type: 3}
   m_Name: RowsManagerConfig
   m_EditorClassIdentifier: 
-  _rowPrefab: {fileID: 0}
+  _rowPrefab: {fileID: 2205073130852260349, guid: 87888a61751962449aa2d9a5c2c338b0,
+    type: 3}
