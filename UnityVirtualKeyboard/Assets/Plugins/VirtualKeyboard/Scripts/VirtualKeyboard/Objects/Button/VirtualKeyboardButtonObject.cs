@@ -1,18 +1,38 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using VirtualKeyboard.Objects.Row.Managers.ButtonsManagement;
+using Zenject;
 
-public class VirtualKeyboardButtonObject : MonoBehaviour
+namespace VirtualKeyboard.Objects.Button
 {
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Root object for the virtual keyboard button prefab
+    /// </summary>
+    public class VirtualKeyboardButtonObject : MonoBehaviour
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
+        public class Pool : MonoMemoryPool<IButtonsParameters, VirtualKeyboardButtonObject>
+        {
+            protected override void Reinitialize(IButtonsParameters parameters, VirtualKeyboardButtonObject item)
+            {
+                item.Reinitialize(parameters);
+            }
+
+            protected override void OnDespawned(VirtualKeyboardButtonObject item)
+            {
+                item.OnDespawned();
+            }
+        }
+
+        private void OnDespawned()
+        {
         
+        }
+
+        private void Reinitialize(IButtonsParameters parameters)
+        {
+    
+        }
+
+    
     }
 }
