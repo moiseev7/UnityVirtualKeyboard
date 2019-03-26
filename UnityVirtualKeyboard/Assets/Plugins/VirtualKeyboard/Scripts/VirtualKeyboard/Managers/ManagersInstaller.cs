@@ -4,6 +4,7 @@ using VirtualKeyboard.Managers.InputFieldManagement;
 using VirtualKeyboard.Managers.KeyboardSpawnManagement;
 using VirtualKeyboard.Managers.LanguageManagement;
 using VirtualKeyboard.Managers.LayoutSceneManagement;
+using VirtualKeyboard.Managers.SizeManagement;
 using Zenject;
 
 namespace VirtualKeyboard.Managers
@@ -39,12 +40,19 @@ namespace VirtualKeyboard.Managers
         [Tooltip("Reference to the scene installer for layout managers")]
         [SerializeField] private LayoutManagerSceneInstaller _layoutManagerSceneInstaller;
 
+        /// <summary>
+        /// Reference to the object size manager installer
+        /// </summary>
+        [Tooltip("Reference to the object size manager installer")]
+        [SerializeField] private ObjectSizeManagerInstaller _objectSizeManagerInstaller;
+
         public void InstallBindings(DiContainer Container)
         {
             _inputFieldManagementInstaller.InstallBindings(Container);
             _keyboardSpawnManagerInstaller.InstallBindings(Container);
             _languageManagerInstaller.InstallBindings(Container);
             _layoutManagerSceneInstaller.InstallBindings(Container);
+            _objectSizeManagerInstaller.InstallBindings(Container);
         }
     }
 }

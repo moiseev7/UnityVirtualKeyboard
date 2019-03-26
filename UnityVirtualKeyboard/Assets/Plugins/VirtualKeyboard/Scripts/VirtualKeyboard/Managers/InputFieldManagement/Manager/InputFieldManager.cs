@@ -88,6 +88,7 @@ namespace VirtualKeyboard.Managers.InputFieldManagement.Manager
         public void Initialize()
         {
             EventSystem.current.ObserveEveryValueChanged(system => system.currentSelectedGameObject)
+                .Where(obj =>obj?.GetComponent<IgnoreSelectable>() == null)
                 .Select(obj => obj?.GetComponent<Selectable>())
                 .Subscribe(selectable =>
                 {

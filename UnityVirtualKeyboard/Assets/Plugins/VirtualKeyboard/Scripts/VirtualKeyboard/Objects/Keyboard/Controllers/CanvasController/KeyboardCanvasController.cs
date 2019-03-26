@@ -40,6 +40,7 @@ namespace VirtualKeyboard.Objects.Keyboard.Controllers.CanvasController
                 _controlledCanvas.GetComponent<RectTransform>()?.GetCopyOf(canvas.GetComponent<RectTransform>());
                 _controlledCanvas.transform.localScale = canvas.transform.lossyScale;
                 _controlledCanvas.transform.rotation = canvas.transform.rotation;
+                _controlledCanvas.sortingOrder = canvas.sortingOrder + 1;
             }));
         }
 
