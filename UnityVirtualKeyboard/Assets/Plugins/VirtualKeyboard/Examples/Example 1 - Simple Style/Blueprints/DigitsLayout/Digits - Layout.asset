@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e388ed966af82a04bb7cacf310e4fedf, type: 3}
+  m_Name: Digits - Layout
+  m_EditorClassIdentifier: 
+  _name: 
+  _amountOfPages: 1
+  _rowBlueprints:
+  - {fileID: 11400000, guid: 000a0e9c643ebfd4689331644fcf4b71, type: 2}
+  - {fileID: 11400000, guid: ddb6db3cbdada2e41943e884a175734f, type: 2}
+  - {fileID: 11400000, guid: 87a93bb4935e126439f6078c314080b5, type: 2}
+  - {fileID: 11400000, guid: dba215ebca614454081dea0778cf5b6d, type: 2}

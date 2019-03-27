@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b140b646a2fbb8488d1bf97b65ecbfe, type: 3}
+  m_Name: Russian - Row 2
+  m_EditorClassIdentifier: 
+  _amountOfPages: 2
+  _buttons:
+  - _buttonPageCharacters:
+    - "\u0444"
+    - "\u0424"
+    _buttonHorizontalSize: 1
+  - _buttonPageCharacters:
+    - "\u044B"
+    - "\u042B"
+    _buttonHorizontalSize: 1
+  - _buttonPageCharacters:
+    - "\u0432"
+    - "\u0412"
+    _buttonHorizontalSize: 1
+  - _buttonPageCharacters:
+    - "\u0430"
+    - "\u0410"
+    _buttonHorizontalSize: 1
+  - _buttonPageCharacters:
+    - "\u043F"
+    - "\u041F"
+    _buttonHorizontalSize: 1
+  - _buttonPageCharacters:
+    - "\u0440"
+    - "\u0420"
+    _buttonHorizontalSize: 1
+  - _buttonPageCharacters:
+    - "\u043E"
+    - "\u041E"
+    _buttonHorizontalSize: 1
+  - _buttonPageCharacters:
+    - "\u043B"
+    - "\u041B"
+    _buttonHorizontalSize: 1
+  - _buttonPageCharacters:
+    - "\u0434"
+    - "\u0414"
+    _buttonHorizontalSize: 1
+  - _buttonPageCharacters:
+    - "\u044D"
+    - "\u042D"
+    _buttonHorizontalSize: 1
+  - _buttonPageCharacters:
+    - ':'
+    - ;
+    _buttonHorizontalSize: 1

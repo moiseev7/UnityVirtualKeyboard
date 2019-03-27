@@ -1,0 +1,16 @@
+{
+    "name": "virtualKeybaord",
+    "references": [
+        "Zenject",
+        "UniRx",
+        "Unity.TextMeshPro"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}
