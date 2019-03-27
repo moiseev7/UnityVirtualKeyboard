@@ -1671,7 +1671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e639f4413176d14cbb735d98afc1ebf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _configContainer: {fileID: 11400000, guid: a290a0b41b8a5c84390581d5bd22c368, type: 2}
+  _configContainer: {fileID: 11400000, guid: e05158974117ecb4cb8c84f7f9a55e70, type: 2}
 --- !u!4 &1273932052
 Transform:
   m_ObjectHideFlags: 0

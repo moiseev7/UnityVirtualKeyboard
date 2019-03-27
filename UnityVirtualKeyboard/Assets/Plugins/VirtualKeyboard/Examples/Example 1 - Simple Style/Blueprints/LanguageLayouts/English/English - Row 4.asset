@@ -21,7 +21,7 @@ MonoBehaviour:
   - _buttonPageCharacters:
     - ' '
     - ' '
-    _buttonHorizontalSize: 6
+    _buttonHorizontalSize: 7
   - _buttonPageCharacters:
     - .
     - .

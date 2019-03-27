@@ -3,6 +3,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using VirtualKeyboard.Objects.Button.Controllers.SizeController;
+using VirtualKeyboard.Objects.Button.Controllers.TypingController;
 using VirtualKeyboard.Objects.Row.Managers.ButtonsManagement;
 using Zenject;
 
@@ -20,6 +21,11 @@ namespace VirtualKeyboard.Objects.Button
         /// Injection of the button size controller
         /// </summary>
         [Inject] private IButtonObjectSizeController _buttonObjectSizeController;
+
+        /// <summary>
+        /// Injection fo the button typing controller
+        /// </summary>
+        [Inject] private IButtonTypingController _buttonTypingController;
 
         public class Pool : MonoMemoryPool<IButtonsParameters, VirtualKeyboardButtonObject>
         {
@@ -44,13 +50,17 @@ namespace VirtualKeyboard.Objects.Button
             gameObject.SetActive(true);
             transform.SetParent(parameters.ButtonParent);
             transform.SetAsLastSibling();
+            var buttonSymbols = parameters.ButtonData.ButtonPageCharacters.ToList()[parameters.Page];
             foreach (var textMesh in _textMeshes)
             {
-                if(textMesh != null)
-                    textMesh.text = parameters.ButtonData.ButtonPageCharacters.ToList()[parameters.Page];
+                if (textMesh != null)
+                {
+                    textMesh.text = buttonSymbols;
+                }
             }
 
             _buttonObjectSizeController.SetSize(parameters.ButtonData.ButtonHorizontalSize);
+            _buttonTypingController.SetTypingSymbols(buttonSymbols);
         }
 
     
