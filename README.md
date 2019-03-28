@@ -1,6 +1,8 @@
 # UnityVirtualKeyboard v.0.1
 This is an early version of the Unity Virtual Keyboard. 
 
+![UnityVirtualKeyboard demo](https://media.giphy.com/media/5ngLQHM48BlMmQ4jqA/giphy.gif)
+
 ## Getting started
 Open the scene: 
 
