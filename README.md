@@ -15,10 +15,24 @@ Currently supported input fields are:
 Only input fields listed in the **selection config container** (*InputFieldSelectionConfigContainer*) will be "noticed" by the virtual keyboard. Therefore, if you want to ignore some field types, remove the corresponding instance of AbstractInputFieldSelectionConfig-based config from the container.
 
 ### Keyboard Controllers
+Virtual Keyboard has several controllers that affect the behaviour. 
+
+All the controllers are optional. If you do not need a certain behaviour, exclude the controllers.
+*Detailed description will be added soon*
+#### Show/Hide Controller
+#### Position Controller
+#### Canvas Controller
+#### Layout Controller
+
+*Description will be added soon*
 ### Button Styles
+*Description will be added soon*
 ### Layouts
+*Description will be added soon*
 ### Languages
+*Description will be added soon*
 ### VR Support
+*Description will be added soon*
 ### Tests
 The project currently has: 
 * **102** Play Mode Tests
