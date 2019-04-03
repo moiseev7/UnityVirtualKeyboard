@@ -4,6 +4,8 @@ This is an early version of the Unity Virtual Keyboard.
 ![UnityVirtualKeyboard demo](https://media.giphy.com/media/5ngLQHM48BlMmQ4jqA/giphy.gif)
 
 ## Getting started
+Please note that the project is using the new Prefab workflows whic are availble starting from **Unity 2018.3**.
+
 Open the scene: 
 
 ```Assets/Plugins/VirtualKeyboard/Examples/Example 1 - Simple Style/Scenes/Example_1.unity```
